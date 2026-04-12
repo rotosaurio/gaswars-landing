@@ -8,6 +8,63 @@ export const es: Dictionary = {
     roadmap: "HOJA_DE_RUTA",
     connectWallet: "CONECTAR_WALLET",
   },
+  gameModes: {
+    label: "MODOS_DE_JUEGO",
+    title: "CUATRO MODOS.",
+    titleAccent: "UNA",
+    titleEnd: "ARENA.",
+    desc: "Desde entrenamiento sin riesgo hasta guerras de bounty con stake alto — elige como competir. Todos los modos corren sobre el mismo pipeline trustless.",
+    modes: [
+      {
+        tag: "GRATIS",
+        title: "TRAINING",
+        desc: "Practica optimizacion sin riesgo. Sin apuesta, sin ranking. Perfecto para afilar tus habilidades antes de entrar a la arena.",
+        details: [
+          "Entrada gratis — sin BNB",
+          "Sin ranking — sin impacto en leaderboard",
+          "Mismos retos que los modos ranked",
+          "Prueba estrategias sin riesgo",
+        ],
+        tier: "free",
+      },
+      {
+        tag: "RANKED",
+        title: "DUELO",
+        desc: "La arena original. Todos los jugadores apuestan BNB igual — la solucion mas eficiente drena el pozo. Pura habilidad, puro pago.",
+        details: [
+          "Apuesta igual por jugador",
+          "Ganador se lleva 95% del pozo",
+          "Ranking en leaderboard global",
+          "2 — 1,000 jugadores por duelo",
+        ],
+        tier: "stake",
+      },
+      {
+        tag: "RANKED",
+        title: "BOUNTY",
+        desc: "Un sponsor publica un bounty para optimizar su codigo. Sin apuesta para jugadores — solo envia la solucion mas eficiente y reclama la recompensa.",
+        details: [
+          "Pozo financiado por sponsor",
+          "Sin apuesta de jugadores",
+          "Problemas de optimizacion reales",
+          "Ranking en leaderboard global",
+        ],
+        tier: "bounty",
+      },
+      {
+        tag: "RANKED // MAX",
+        title: "BOUNTY_WAR",
+        desc: "La arena definitiva. Bounty garantizado del sponsor mas apuestas de jugadores que aumentan el pozo — como poker con premio minimo asegurado. Maximo riesgo, maxima recompensa.",
+        details: [
+          "Bounty garantizado + apuestas",
+          "Los pozos de premios mas grandes",
+          "Sponsor define piso minimo",
+          "Competencia ranked elite",
+        ],
+        tier: "max",
+      },
+    ],
+  },
   hero: {
     title: "CODIGO LIMPIO.",
     titleAccent: "COBRA",

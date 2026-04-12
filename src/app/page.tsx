@@ -52,23 +52,6 @@ const ARENA_COLORS = [
   { num: "text-secondary-container/20", icon: "text-secondary-container", stat: "text-secondary-container" },
   { num: "text-on-tertiary-container/20", icon: "text-on-tertiary-container", stat: "text-on-tertiary-container" },
 ];
-const SECURITY_ICONS = ["lock", "casino", "shield", "verified"];
-const SECURITY_COLORS = [
-  { icon: "text-primary-container", border: "border-primary-container/20" },
-  { icon: "text-secondary-container", border: "border-secondary-container/20" },
-  { icon: "text-primary-container", border: "border-primary-container/20" },
-  { icon: "text-secondary-container", border: "border-secondary-container/20" },
-];
-const PIPELINE_COLORS = [
-  "bg-primary-container", "bg-primary-container",
-  "bg-secondary-container", "bg-secondary-container",
-  "bg-primary-container", "bg-on-tertiary-container",
-];
-const FEATURE_COLORS = [
-  "bg-primary-container", "bg-secondary-container", "bg-on-tertiary-container",
-  "bg-primary-container", "bg-secondary-container",
-];
-const ARCH_COLORS = ["primary-container", "secondary-container", "primary-container"];
 
 export default function Landing() {
   const { t, locale, setLocale } = useLanguage();
@@ -115,7 +98,6 @@ export default function Landing() {
   const navLinks = [
     { label: t.nav.protocol, href: "#protocol", active: true },
     { label: t.nav.arena, href: "#arena" },
-    { label: t.nav.security, href: "#security" },
     { label: t.nav.roadmap, href: "#roadmap" },
   ];
 
@@ -311,158 +293,49 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ══════ SIDE BAR INDICATOR ══════ */}
-      <aside className="fixed left-0 top-1/2 -translate-y-1/2 h-96 w-1 bg-primary-container/20 flex-col justify-between py-4 items-center hidden xl:flex">
-        <span className="material-symbols-outlined text-[10px] text-primary-container">north</span>
-        <div className="rotate-90 origin-center whitespace-nowrap font-mono text-[8px] tracking-[0.5em] text-white/20 uppercase">
-          {t.sidebar}
-        </div>
-        <span className="material-symbols-outlined text-[10px] text-primary-container">south</span>
-      </aside>
-
-      {/* ══════ EXECUTION PIPELINE — TERMINAL ══════ */}
-      <section className="py-24 px-6 bg-surface">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <FadeUp>
-            <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                {t.pipeline.title}<br />
-                <span className="text-primary-container">{t.pipeline.titleAccent}</span> {t.pipeline.titleEnd}
-              </h2>
-              <p className="text-white/50 text-sm leading-relaxed font-body max-w-md">{t.pipeline.desc}</p>
-              <div className="space-y-3">
-                {t.pipeline.phases.map((p, i) => (
-                  <div key={p.phase} className="flex items-center gap-4">
-                    <div className={`w-10 h-[1px] ${PIPELINE_COLORS[i]}`} />
-                    <span className="font-mono text-[10px] text-white/40 w-24">{p.phase}</span>
-                    <span className="font-mono text-xs text-white/60 uppercase tracking-widest">{p.desc}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp>
-            <div className="relative bg-surface-container-lowest border border-outline-variant/15 overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-              <div className="flex items-center justify-between px-4 py-3 bg-surface-container border-b border-outline-variant/15">
-                <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-on-tertiary-container/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-primary-container/30" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-primary-container/60" />
-                </div>
-                <span className="font-mono text-[10px] text-white/30 uppercase">{t.pipeline.terminalFile}</span>
-              </div>
-              <pre className="p-6 font-mono text-[11px] leading-relaxed overflow-x-auto">
-                <code>
-{`  `}<span className="text-white/30">{"// Sandbox.sol — On-chain gas measurement"}</span>{`
-  `}<span className="text-secondary">{"function"}</span>{` `}<span className="text-primary-container">{"measureGas"}</span>{`(
-      `}<span className="text-on-surface-variant">{"address deployed,"}</span>{`
-      `}<span className="text-on-surface-variant">{"bytes calldata input,"}</span>{`
-      `}<span className="text-on-surface-variant">{"uint256 gasLimit"}</span>{`
-  ) `}<span className="text-secondary">{"external"}</span>{` `}<span className="text-secondary">{"view"}</span>{` `}<span className="text-secondary">{"returns"}</span>{` (`}<span className="text-on-surface-variant">{"uint256"}</span>{`) {
-      `}<span className="text-primary-container">{"uint256"}</span>{` gasBefore = `}<span className="text-primary-fixed-dim">{"gasleft"}</span>{`();
-
-      `}<span className="text-white/30">{"// staticcall prevents SSTORE refund gaming"}</span>{`
-      (`}<span className="text-primary-container">{"bool"}</span>{` ok, ) = deployed.`}<span className="text-primary-fixed-dim">{"staticcall"}</span>{`{
-          gas: `}<span className="text-primary-container">{"1_000_000"}</span>{`
-      }(input);
-
-      `}<span className="text-secondary">{"require"}</span>{`(ok, `}<span className="text-on-tertiary-container">{'"EXEC_FAILED"'}</span>{`);
-      `}<span className="text-secondary">{"return"}</span>{` gasBefore - `}<span className="text-primary-fixed-dim">{"gasleft"}</span>{`();
-  }`}
-                </code>
-              </pre>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ══════ SECURITY — COMMIT REVEAL ══════ */}
-      <section id="security" className="py-24 px-6 bg-surface-container-lowest">
+      {/* ══════ GAME MODES ══════ */}
+      <section className="py-24 px-6 bg-surface border-t border-outline-variant/15">
         <div className="max-w-7xl mx-auto">
           <FadeUp>
-            <div className="mb-16">
-              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.security.label}</span>
+            <div className="mb-6">
+              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.gameModes.label}</span>
               <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                {t.security.title} <span className="text-secondary-container">{t.security.titleAccent}</span>.
+                {t.gameModes.title} <span className="text-secondary-container">{t.gameModes.titleAccent}</span> {t.gameModes.titleEnd}
               </h2>
             </div>
+            <p className="text-white/50 text-sm leading-relaxed font-body max-w-2xl mb-16">{t.gameModes.desc}</p>
           </FadeUp>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.security.cards.map((card, i) => (
-              <FadeUp key={card.title}>
-                <div className={`bg-surface-container-low p-8 border-l-2 ${SECURITY_COLORS[i].border} hover:bg-surface-container transition-colors h-full`}>
-                  <span className={`material-symbols-outlined ${SECURITY_COLORS[i].icon} mb-6 block`}>{SECURITY_ICONS[i]}</span>
-                  <h4 className="font-headline text-sm font-bold text-white uppercase tracking-widest mb-4">{card.title}</h4>
-                  <p className="text-white/40 text-sm leading-relaxed font-body">{card.desc}</p>
-                </div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════ FEATURES — TACTICAL GRID ══════ */}
-      <section className="py-24 px-6 bg-surface">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <FadeUp>
-            <div className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                {t.features.title} <br />
-                <span className="text-secondary-container">{t.features.titleAccent}</span> {t.features.titleEnd}
-              </h2>
-              <div className="space-y-4">
-                {t.features.items.map((item, i) => (
-                  <div key={item} className="flex items-center gap-4">
-                    <div className={`w-12 h-[1px] ${FEATURE_COLORS[i]}`} />
-                    <span className="font-mono text-xs text-white/60 uppercase tracking-widest">{item}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-outline-variant/15">
+            {t.gameModes.modes.map((mode, i) => {
+              const tierStyles = {
+                free: { accent: "text-white/50", border: "border-white/10", dot: "bg-white/30", tagBg: "bg-white/5 text-white/40" },
+                stake: { accent: "text-primary-container", border: "border-primary-container/20", dot: "bg-primary-container", tagBg: "bg-primary-container/10 text-primary-container" },
+                bounty: { accent: "text-secondary-container", border: "border-secondary-container/20", dot: "bg-secondary-container", tagBg: "bg-secondary-container/10 text-secondary-container" },
+                max: { accent: "text-on-tertiary-container", border: "border-on-tertiary-container/20", dot: "bg-on-tertiary-container", tagBg: "bg-on-tertiary-container/10 text-on-tertiary-container" },
+              }[mode.tier];
+              return (
+                <FadeUp key={mode.title}>
+                  <div className={`p-8 h-full hover:bg-surface-container-low transition-colors ${i < 3 ? "border-b lg:border-b-0 lg:border-r border-outline-variant/15" : ""}`}>
+                    <div className="flex justify-between items-start mb-6">
+                      <span className={`font-mono text-[9px] px-2 py-0.5 uppercase tracking-widest ${tierStyles.tagBg}`}>{mode.tag}</span>
+                      <span className={`w-1.5 h-1.5 rounded-full ${tierStyles.dot} ${mode.tier !== "free" ? "animate-pulse" : ""}`} />
+                    </div>
+                    <h4 className={`font-headline text-2xl font-bold mb-3 ${tierStyles.accent}`}>{mode.title}</h4>
+                    <p className="text-white/40 text-sm leading-relaxed font-body mb-6">{mode.desc}</p>
+                    <div className={`border-t ${tierStyles.border} pt-4 space-y-2`}>
+                      {mode.details.map((d, j) => (
+                        <div key={j} className="flex items-start gap-2">
+                          <span className={`font-mono text-[10px] mt-0.5 ${tierStyles.accent}`}>&gt;</span>
+                          <span className="font-mono text-[10px] text-white/50">{d}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          </FadeUp>
-
-          <FadeUp>
-            <div className="relative aspect-square bg-surface-container-low overflow-hidden group border border-outline-variant/10">
-              <div className="absolute inset-0 bg-gradient-to-tr from-surface-container-lowest to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                <pre className="font-mono text-[10px] text-primary-container leading-relaxed p-8 overflow-hidden">
-{`// GasWarFactory.sol — Architecture
-contract GasWarFactory is Ownable {
-    address public implementation;  // GasWarDuel
-    address public sandbox;         // Stateless
-    uint256 public platformFee;     // 500 = 5%
-    uint256 public constant MAX_FEE = 1000;
-
-    function createDuel(
-        uint256 minPlayers,   // >= 2
-        uint256 maxPlayers,   // <= 1000
-        bytes calldata ref,   // Reference solution
-        bytes4 selector,      // fn signature
-        uint256 stake         // BNB per player
-    ) external payable {
-        address clone = Clones.clone(implementation);
-        GasWarDuel(clone).initialize{value: stake}(
-            msg.sender, sandbox, ...
-        );
-        emit DuelCreated(clone, msg.sender);
-    }
-}`}
-                </pre>
-              </div>
-              <div className="absolute top-4 right-4 flex gap-2">
-                <span className="px-2 py-1 bg-primary-container text-on-primary font-mono text-[8px] font-bold">{t.features.badge1}</span>
-                <span className="px-2 py-1 bg-surface-container-highest text-white font-mono text-[8px] font-bold">{t.features.badge2}</span>
-              </div>
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="font-mono text-[10px] text-primary-container/80 mb-2">{t.features.coverageLabel}</div>
-                <div className="h-1 w-full bg-white/5 overflow-hidden">
-                  <div className="h-full bg-primary-container w-full" />
-                </div>
-              </div>
-            </div>
-          </FadeUp>
+                </FadeUp>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -507,44 +380,6 @@ contract GasWarFactory is Ownable {
                 </FadeUp>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════ CONTRACT ARCHITECTURE ══════ */}
-      <section className="py-24 px-6 bg-surface-container-lowest border-y border-outline-variant/15">
-        <div className="max-w-7xl mx-auto">
-          <FadeUp>
-            <div className="mb-16">
-              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.architecture.label}</span>
-              <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                {t.architecture.title} <span className="text-primary-container">{t.architecture.titleAccent}</span> {t.architecture.titleEnd}
-              </h2>
-            </div>
-          </FadeUp>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.architecture.contracts.map((c, i) => (
-              <FadeUp key={c.name}>
-                <div className="bg-surface-container-low p-8 hover:bg-surface-container transition-colors h-full flex flex-col">
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <div className={`font-mono text-[10px] text-${ARCH_COLORS[i]} mb-1`}>{c.role}</div>
-                      <h4 className="font-headline text-xl font-bold text-white">{c.name}.sol</h4>
-                    </div>
-                    <span className="font-mono text-[10px] text-white/20">{c.lines} LOC</span>
-                  </div>
-                  <p className="text-white/40 text-sm leading-relaxed font-body mb-6 flex-grow">{c.desc}</p>
-                  <div className="space-y-1">
-                    {c.functions.map((fn) => (
-                      <div key={fn} className={`font-mono text-[10px] text-${ARCH_COLORS[i]}/60`}>
-                        <span className="text-white/20 mr-2">&gt;</span>{fn}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </FadeUp>
-            ))}
           </div>
         </div>
       </section>

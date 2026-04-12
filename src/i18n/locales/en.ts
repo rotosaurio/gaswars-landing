@@ -8,6 +8,63 @@ export const en: Dictionary = {
     roadmap: "ROADMAP",
     connectWallet: "CONNECT_WALLET",
   },
+  gameModes: {
+    label: "GAME_MODES",
+    title: "FOUR MODES.",
+    titleAccent: "ONE",
+    titleEnd: "ARENA.",
+    desc: "From zero-risk training to high-stakes bounty wars — pick how you compete. Every mode runs on the same trustless pipeline.",
+    modes: [
+      {
+        tag: "FREE",
+        title: "TRAINING",
+        desc: "Practice optimization with zero risk. No stake, no ranking. Perfect for sharpening your skills before entering the arena.",
+        details: [
+          "Free entry — no BNB required",
+          "Unranked — no leaderboard impact",
+          "Same challenges as ranked modes",
+          "Test strategies risk-free",
+        ],
+        tier: "free",
+      },
+      {
+        tag: "RANKED",
+        title: "DUEL",
+        desc: "The original arena. All players stake equal BNB — the most efficient solution drains the pool. Pure skill, pure payout.",
+        details: [
+          "Equal stake per player",
+          "Winner takes 95% of pool",
+          "Ranked on global leaderboard",
+          "2 — 1,000 players per duel",
+        ],
+        tier: "stake",
+      },
+      {
+        tag: "RANKED",
+        title: "BOUNTY",
+        desc: "A sponsor posts a bounty for optimizing their code. No player stake required — just submit the most gas-efficient solution and claim the reward.",
+        details: [
+          "Sponsor-funded prize pool",
+          "No player stake required",
+          "Real-world optimization problems",
+          "Ranked on global leaderboard",
+        ],
+        tier: "bounty",
+      },
+      {
+        tag: "RANKED // MAX",
+        title: "BOUNTY_WAR",
+        desc: "The ultimate arena. Guaranteed bounty from sponsor plus player stakes that increase the pool — like poker with a guaranteed prize floor. Maximum risk, maximum reward.",
+        details: [
+          "Guaranteed bounty + player stakes",
+          "Largest possible prize pools",
+          "Sponsor sets minimum floor",
+          "Elite ranked competition",
+        ],
+        tier: "max",
+      },
+    ],
+  },
   hero: {
     title: "SHIP TIGHT.",
     titleAccent: "GET",

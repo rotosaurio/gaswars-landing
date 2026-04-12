@@ -46,6 +46,14 @@ export interface EcosystemItem {
   desc: string;
 }
 
+export interface GameMode {
+  tag: string;
+  title: string;
+  desc: string;
+  details: string[];
+  tier: "free" | "stake" | "bounty" | "max";
+}
+
 export interface Dictionary {
   nav: {
     protocol: string;
@@ -53,6 +61,14 @@ export interface Dictionary {
     security: string;
     roadmap: string;
     connectWallet: string;
+  };
+  gameModes: {
+    label: string;
+    title: string;
+    titleAccent: string;
+    titleEnd: string;
+    desc: string;
+    modes: GameMode[];
   };
   hero: {
     title: string;
