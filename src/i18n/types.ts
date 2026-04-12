@@ -38,6 +38,14 @@ export interface RoadmapPhase {
   items: string[];
 }
 
+export interface EcosystemItem {
+  name: string;
+  lang: string;
+  status: string;
+  statusColor: "green" | "purple" | "dim";
+  desc: string;
+}
+
 export interface Dictionary {
   nav: {
     protocol: string;
@@ -101,6 +109,14 @@ export interface Dictionary {
     title: string;
     titleAccent: string;
     phases: RoadmapPhase[];
+  };
+  ecosystems: {
+    label: string;
+    title: string;
+    titleAccent: string;
+    titleEnd: string;
+    desc: string;
+    items: EcosystemItem[];
   };
   cta: {
     title: string;

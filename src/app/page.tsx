@@ -466,6 +466,51 @@ contract GasWarFactory is Ownable {
         </div>
       </section>
 
+      {/* ══════ ECOSYSTEMS — MULTI RUNTIME ══════ */}
+      <section className="py-24 px-6 bg-surface-container-lowest border-t border-outline-variant/15">
+        <div className="max-w-7xl mx-auto">
+          <FadeUp>
+            <div className="mb-6">
+              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.ecosystems.label}</span>
+              <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
+                {t.ecosystems.title} <span className="text-secondary-container">{t.ecosystems.titleAccent}</span> {t.ecosystems.titleEnd}
+              </h2>
+            </div>
+            <p className="text-white/50 text-sm leading-relaxed font-body max-w-2xl mb-16">{t.ecosystems.desc}</p>
+          </FadeUp>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-outline-variant/15">
+            {t.ecosystems.items.map((eco, i) => {
+              const statusCls = eco.statusColor === "green"
+                ? "text-primary-container"
+                : eco.statusColor === "purple"
+                ? "text-secondary-container"
+                : "text-white/30";
+              const dotCls = eco.statusColor === "green"
+                ? "bg-primary-container"
+                : eco.statusColor === "purple"
+                ? "bg-secondary-container"
+                : "bg-white/20";
+              return (
+                <FadeUp key={eco.name}>
+                  <div className={`p-8 h-full hover:bg-surface-container-low transition-colors ${i < 3 ? "border-b lg:border-b-0 lg:border-r border-outline-variant/15" : ""}`}>
+                    <div className="flex justify-between items-start mb-6">
+                      <h4 className="font-headline text-2xl font-bold text-white">{eco.name}</h4>
+                      <div className="flex items-center gap-2">
+                        <span className={`w-1.5 h-1.5 rounded-full ${dotCls} ${eco.statusColor === "green" ? "animate-pulse" : ""}`} />
+                        <span className={`font-mono text-[9px] ${statusCls} uppercase tracking-widest`}>{eco.status}</span>
+                      </div>
+                    </div>
+                    <div className="font-mono text-[10px] text-primary-container/60 mb-4">{eco.lang}</div>
+                    <p className="text-white/40 text-sm leading-relaxed font-body">{eco.desc}</p>
+                  </div>
+                </FadeUp>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* ══════ CONTRACT ARCHITECTURE ══════ */}
       <section className="py-24 px-6 bg-surface-container-lowest border-y border-outline-variant/15">
         <div className="max-w-7xl mx-auto">

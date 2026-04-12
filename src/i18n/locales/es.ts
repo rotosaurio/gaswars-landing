@@ -9,10 +9,10 @@ export const es: Dictionary = {
     connectWallet: "CONECTAR_WALLET",
   },
   hero: {
-    title: "OPTIMIZA",
-    titleAccent: "O",
-    titleEnd: "MUERE",
-    subtitle: "// INGENIERIA COMPETITIVA DE SOLIDITY EN BSC",
+    title: "CODIGO LIMPIO.",
+    titleAccent: "COBRA",
+    titleEnd: "BIEN.",
+    subtitle: "// OPTIMIZACION DE CODIGO COMPETITIVA. APUESTA. RESUELVE. DRENA EL POZO.",
     operatorsRegistered: "OPERADORES_REGISTRADOS",
     emailPlaceholder: "INGRESA_EMAIL_OPERADOR...",
     initiateEntry: "INICIAR_ENTRADA",
@@ -43,14 +43,14 @@ export const es: Dictionary = {
         statValue: "2 — 1,000 JUGADORES",
       },
       {
-        title: "OPTIMIZACION_SOL",
-        desc: "Escribe la solucion Solidity mas eficiente en gas. Tu bytecode se despliega on-chain via CREATE y se ejecuta con staticcall contra inputs de prueba deterministicos. Cada opcode cuenta.",
-        statLabel: "LIMITE_GAS",
-        statValue: "1,000,000 POR LLAMADA",
+        title: "OPTIMIZA_CODIGO",
+        desc: "Resuelve retos algoritmicos con el codigo mas eficiente posible. Empezando con optimizacion de gas en Solidity — expandiendo a Rust, Move, Go, SQL y mas.",
+        statLabel: "RUNTIME_ACTIVO",
+        statValue: "SOLIDITY // EVM",
       },
       {
-        title: "DRENAR_EL_POZO",
-        desc: "El menor gas total gana. El contrato resuelve los ganadores automaticamente — el 95% del pozo apostado va al vencedor(es). Cobro tipo pull, sin fondos atascados. Nunca.",
+        title: "DRENA_POZO",
+        desc: "La solucion mas eficiente gana. El contrato resuelve a los ganadores automaticamente — el 95% del pozo apostado va al vencedor(es). Cobro tipo pull, sin fondos atascados. Nunca.",
         statLabel: "PAGO",
         statValue: "95% A GANADORES",
       },
@@ -61,12 +61,12 @@ export const es: Dictionary = {
     title: "PIPELINE DE",
     titleAccent: "EJECUCION",
     titleEnd: "EN 6 FASES.",
-    desc: "Cada duelo sigue un pipeline trustless y deterministico — desde la inscripcion hasta el commit-reveal, la medicion de gas on-chain y la liquidacion atomica.",
+    desc: "Cada duelo sigue un pipeline trustless y deterministico — desde la inscripcion hasta el commit-reveal, la medicion de rendimiento y la liquidacion atomica.",
     phases: [
       { phase: "ABIERTO", desc: "Jugadores se unen y apuestan BNB" },
-      { phase: "COMMIT", desc: "Envian keccak256(bytecode + salt)" },
-      { phase: "REVEAL", desc: "Revelan bytecode y salt on-chain" },
-      { phase: "EJECUTAR", desc: "Sandbox mide gas via staticcall" },
+      { phase: "COMMIT", desc: "Envian keccak256(solucion + salt)" },
+      { phase: "REVEAL", desc: "Revelan solucion y salt on-chain" },
+      { phase: "EJECUTAR", desc: "Sandbox mide el rendimiento" },
       { phase: "RESUELTO", desc: "Ganadores reclaman el pozo" },
       { phase: "CANCELADO", desc: "Reembolso de emergencia si es necesario" },
     ],
@@ -79,15 +79,15 @@ export const es: Dictionary = {
     cards: [
       {
         title: "COMMIT_REVEAL",
-        desc: "Los jugadores envian keccak256(bytecode + salt) primero. Las soluciones permanecen ocultas hasta que todos los operadores hayan hecho commit. Sin espionaje.",
+        desc: "Los jugadores envian keccak256(solucion + salt) primero. Las soluciones permanecen ocultas hasta que todos los operadores hayan hecho commit. Sin espionaje.",
       },
       {
         title: "BLOCKHASH_FUTURO",
         desc: "Los inputs de prueba se generan con un block hash futuro — imposible de conocer al momento del commit. Previene ataques de simulacion y reversion.",
       },
       {
-        title: "SOLO_STATICCALL",
-        desc: "Todo el bytecode se ejecuta via staticcall. Sin SSTORE, sin SELFDESTRUCT, sin explotacion de reembolsos de gas. Computacion pura.",
+        title: "EJECUCION_AISLADA",
+        desc: "Todo el codigo se ejecuta en sandboxes aislados. On-chain via staticcall para EVM. Off-chain en contenedores seguros para otros runtimes. Sin exploits.",
       },
       {
         title: "CUMPLE_EIP-170",
@@ -139,6 +139,43 @@ export const es: Dictionary = {
       },
     ],
   },
+  ecosystems: {
+    label: "ARENAS_MULTI_RUNTIME",
+    title: "UN PROTOCOLO.",
+    titleAccent: "TODA",
+    titleEnd: "OPTIMIZACION.",
+    desc: "GasWars empieza con optimizacion de gas en Solidity sobre EVM — pero el protocolo esta disenado para expandirse a cada runtime donde el rendimiento importa. Mismo staking. Mismo commit-reveal. Nuevos campos de batalla.",
+    items: [
+      {
+        name: "EVM",
+        lang: "Solidity / Yul / Huff",
+        status: "ACTIVO",
+        statusColor: "green",
+        desc: "Optimizacion de gas en BSC. Ejecucion on-chain via staticcall. La arena original.",
+      },
+      {
+        name: "SUI",
+        lang: "Move",
+        status: "PROXIMAMENTE",
+        statusColor: "purple",
+        desc: "Optimiza bytecode Move para el runtime de Sui. Sandbox off-chain con verificacion por oraculo.",
+      },
+      {
+        name: "SOLANA",
+        lang: "Rust",
+        status: "PROXIMAMENTE",
+        statusColor: "purple",
+        desc: "Optimizacion de compute units para programas de Solana. Ejecucion benchmark en sandbox BPF aislado.",
+      },
+      {
+        name: "GENERAL",
+        lang: "Go / Rust / SQL",
+        status: "PLANEADO",
+        statusColor: "dim",
+        desc: "Optimizacion de algoritmos mas alla de blockchain. Rendimiento de queries, velocidad de ejecucion, eficiencia de memoria.",
+      },
+    ],
+  },
   roadmap: {
     label: "CALENDARIO_DE_DESPLIEGUE",
     title: "LA",
@@ -146,7 +183,7 @@ export const es: Dictionary = {
     phases: [
       {
         phase: "FASE_01",
-        title: "LANZAMIENTO TESTNET BSC",
+        title: "ARENA SOLIDITY — BSC",
         status: "COMPLETA",
         items: [
           "Contratos inteligentes V2 desplegados y verificados on-chain",
@@ -157,7 +194,7 @@ export const es: Dictionary = {
       },
       {
         phase: "FASE_02",
-        title: "FRONTEND Y BACKEND",
+        title: "LANZAMIENTO DE PLATAFORMA",
         status: "EN_PROGRESO",
         items: [
           "Lobby de duelos en tiempo real con conteo de jugadores",
@@ -168,23 +205,23 @@ export const es: Dictionary = {
       },
       {
         phase: "FASE_03",
-        title: "MAINNET Y COMPETENCIA",
+        title: "EXPANSION MULTI-RUNTIME",
         status: "PENDIENTE",
         items: [
-          "Despliegue en BSC mainnet y verificacion",
-          "Sistema de leaderboard con ranking",
-          "Torneos con formato de eliminacion",
-          "Biblioteca de retos con problemas curados",
+          "Motor de ejecucion off-chain verificado por oraculo",
+          "Arena Move para la red Sui",
+          "Arena Rust para programas de Solana",
+          "Leaderboards con ranking por runtime",
         ],
       },
       {
         phase: "FASE_04",
-        title: "EXPANSION DEL PROTOCOLO",
+        title: "MAS ALLA DE BLOCKCHAIN",
         status: "PLANEADO",
         items: [
-          "Despliegue multi-chain (Ethereum, Arbitrum)",
+          "Arenas de optimizacion de queries SQL",
+          "Duelos de algoritmos de proposito general (Go, Rust, Python)",
           "Gobernanza DAO para parametros de comision",
-          "Tipos de reto avanzados (Yul, Huff, bytecode raw)",
           "SDK para creacion de arenas por terceros",
         ],
       },
@@ -197,7 +234,7 @@ export const es: Dictionary = {
     button: "INICIAR_ENTRADA",
   },
   footer: {
-    copyright: "\u00a9 2025 // OPTIMIZA_O_MUERE",
+    copyright: "\u00a9 2025 // SHIP_TIGHT_GET_PAID",
     techLine: "Solidity 0.8.19 // EIP-1167 // EIP-170 // BSC Chain ID: 56",
     systemsOperational: "TODOS_LOS_SISTEMAS_OPERATIVOS",
     links: ["TWITTER", "DISCORD", "GITHUB", "DOCS"],

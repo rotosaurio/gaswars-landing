@@ -9,10 +9,10 @@ export const en: Dictionary = {
     connectWallet: "CONNECT_WALLET",
   },
   hero: {
-    title: "OPTIMIZE",
-    titleAccent: "OR",
-    titleEnd: "PERISH",
-    subtitle: "// HIGH-STAKES COMPETITIVE SOLIDITY ENGINEERING ON BSC",
+    title: "SHIP TIGHT.",
+    titleAccent: "GET",
+    titleEnd: "PAID.",
+    subtitle: "// COMPETITIVE CODE OPTIMIZATION. STAKE. SOLVE. DRAIN THE POOL.",
     operatorsRegistered: "OPERATORS_REGISTERED",
     emailPlaceholder: "ENTER_OPERATOR_EMAIL...",
     initiateEntry: "INITIATE_ENTRY",
@@ -43,14 +43,14 @@ export const en: Dictionary = {
         statValue: "2 — 1,000 PLAYERS",
       },
       {
-        title: "SOL_OPTIMIZATION",
-        desc: "Write the most gas-efficient Solidity solution. Your bytecode is deployed on-chain via CREATE, then executed with staticcall against deterministic test inputs. Every opcode counts.",
-        statLabel: "GAS_LIMIT",
-        statValue: "1,000,000 PER CALL",
+        title: "OPTIMIZE_CODE",
+        desc: "Solve algorithmic challenges with the most efficient code possible. Starting with Solidity gas optimization — expanding to Rust, Move, Go, SQL and beyond.",
+        statLabel: "ACTIVE_RUNTIME",
+        statValue: "SOLIDITY // EVM",
       },
       {
         title: "DRAIN_THE_POOL",
-        desc: "Lowest total gas wins. The contract resolves winners automatically — 95% of the staked pool goes to the victor(s). Pull-based claims, no stuck funds. Ever.",
+        desc: "The most efficient solution wins. The contract resolves winners automatically — 95% of the staked pool goes to the victor(s). Pull-based claims, no stuck funds. Ever.",
         statLabel: "PAYOUT",
         statValue: "95% TO WINNERS",
       },
@@ -61,12 +61,12 @@ export const en: Dictionary = {
     title: "6-PHASE",
     titleAccent: "EXECUTION",
     titleEnd: "PIPELINE.",
-    desc: "Each duel follows a trustless, deterministic pipeline — from open enrollment through commit-reveal to on-chain gas measurement and atomic settlement.",
+    desc: "Each duel follows a trustless, deterministic pipeline — from open enrollment through commit-reveal to on-chain measurement and atomic settlement.",
     phases: [
       { phase: "OPEN", desc: "Players join & stake BNB" },
-      { phase: "COMMIT", desc: "Submit keccak256(bytecode + salt)" },
-      { phase: "REVEAL", desc: "Reveal bytecode & salt on-chain" },
-      { phase: "EXECUTE", desc: "Sandbox measures gas via staticcall" },
+      { phase: "COMMIT", desc: "Submit keccak256(solution + salt)" },
+      { phase: "REVEAL", desc: "Reveal solution & salt on-chain" },
+      { phase: "EXECUTE", desc: "Sandbox measures performance" },
       { phase: "RESOLVED", desc: "Winners claim prize pool" },
       { phase: "CANCELLED", desc: "Emergency refund if needed" },
     ],
@@ -79,15 +79,15 @@ export const en: Dictionary = {
     cards: [
       {
         title: "COMMIT_REVEAL",
-        desc: "Players submit keccak256(bytecode + salt) first. Solutions stay hidden until all operators have committed. No peeking.",
+        desc: "Players submit keccak256(solution + salt) first. Solutions stay hidden until all operators have committed. No peeking.",
       },
       {
         title: "FUTURE_BLOCKHASH",
         desc: "Test inputs are seeded from a future block hash — unknowable at commit time. Prevents simulate-and-revert attacks.",
       },
       {
-        title: "STATICCALL_ONLY",
-        desc: "All bytecode is executed via staticcall. No SSTORE, no SELFDESTRUCT, no gas refund exploitation. Pure computation.",
+        title: "SANDBOXED_EXECUTION",
+        desc: "All code runs in isolated sandboxes. On-chain via staticcall for EVM. Off-chain in secure containers for other runtimes. No exploits.",
       },
       {
         title: "EIP-170_COMPLIANT",
@@ -139,6 +139,43 @@ export const en: Dictionary = {
       },
     ],
   },
+  ecosystems: {
+    label: "MULTI_RUNTIME_ARENAS",
+    title: "ONE PROTOCOL.",
+    titleAccent: "EVERY",
+    titleEnd: "OPTIMIZATION.",
+    desc: "GasWars starts with Solidity gas optimization on EVM — but the protocol is designed to expand into every runtime where performance matters. Same staking. Same commit-reveal. New battlegrounds.",
+    items: [
+      {
+        name: "EVM",
+        lang: "Solidity / Yul / Huff",
+        status: "LIVE",
+        statusColor: "green",
+        desc: "Gas optimization on BSC. On-chain execution via staticcall. The original arena.",
+      },
+      {
+        name: "SUI",
+        lang: "Move",
+        status: "COMING_SOON",
+        statusColor: "purple",
+        desc: "Optimize Move bytecode for the Sui runtime. Off-chain sandbox with oracle verification.",
+      },
+      {
+        name: "SOLANA",
+        lang: "Rust",
+        status: "COMING_SOON",
+        statusColor: "purple",
+        desc: "Compute unit optimization for Solana programs. Benchmark execution in isolated BPF sandbox.",
+      },
+      {
+        name: "GENERAL",
+        lang: "Go / Rust / SQL",
+        status: "PLANNED",
+        statusColor: "dim",
+        desc: "Algorithm optimization beyond blockchain. Query performance, execution speed, memory efficiency.",
+      },
+    ],
+  },
   roadmap: {
     label: "DEPLOYMENT_SCHEDULE",
     title: "THE",
@@ -146,7 +183,7 @@ export const en: Dictionary = {
     phases: [
       {
         phase: "PHASE_01",
-        title: "BSC TESTNET LAUNCH",
+        title: "SOLIDITY ARENA — BSC",
         status: "COMPLETE",
         items: [
           "V2 smart contracts deployed & verified on-chain",
@@ -157,7 +194,7 @@ export const en: Dictionary = {
       },
       {
         phase: "PHASE_02",
-        title: "FRONTEND & BACKEND",
+        title: "PLATFORM LAUNCH",
         status: "IN_PROGRESS",
         items: [
           "Real-time duel lobby with live player count",
@@ -168,23 +205,23 @@ export const en: Dictionary = {
       },
       {
         phase: "PHASE_03",
-        title: "MAINNET & COMPETITION",
+        title: "MULTI-RUNTIME EXPANSION",
         status: "PENDING",
         items: [
-          "BSC mainnet deployment & verification",
-          "Ranked leaderboard system",
-          "Tournament brackets with elimination rounds",
-          "Challenge library with curated problems",
+          "Oracle-verified off-chain execution engine",
+          "Move arena for Sui network",
+          "Rust arena for Solana programs",
+          "Ranked leaderboards per runtime",
         ],
       },
       {
         phase: "PHASE_04",
-        title: "PROTOCOL EXPANSION",
+        title: "BEYOND BLOCKCHAIN",
         status: "PLANNED",
         items: [
-          "Multi-chain deployment (Ethereum, Arbitrum)",
+          "SQL query optimization arenas",
+          "General-purpose algorithm duels (Go, Rust, Python)",
           "DAO governance for fee parameters",
-          "Advanced challenge types (Yul, Huff, raw bytecode)",
           "SDK for third-party arena creation",
         ],
       },
@@ -197,7 +234,7 @@ export const en: Dictionary = {
     button: "INITIATE_ENTRY",
   },
   footer: {
-    copyright: "\u00a9 2025 // OPTIMIZE_OR_DIE",
+    copyright: "\u00a9 2025 // SHIP_TIGHT_GET_PAID",
     techLine: "Solidity 0.8.19 // EIP-1167 // EIP-170 // BSC Chain ID: 56",
     systemsOperational: "ALL_SYSTEMS_OPERATIONAL",
     links: ["TWITTER", "DISCORD", "GITHUB", "DOCS"],
