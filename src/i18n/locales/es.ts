@@ -1,0 +1,209 @@
+import type { Dictionary } from "../types";
+
+export const es: Dictionary = {
+  nav: {
+    protocol: "PROTOCOLO",
+    arena: "ARENA",
+    security: "SEGURIDAD",
+    roadmap: "HOJA_DE_RUTA",
+    connectWallet: "CONECTAR_WALLET",
+  },
+  hero: {
+    title: "OPTIMIZA",
+    titleAccent: "O",
+    titleEnd: "PERECE",
+    subtitle: "// INGENIERIA COMPETITIVA DE SOLIDITY EN BSC",
+    operatorsRegistered: "OPERADORES_REGISTRADOS",
+    emailPlaceholder: "INGRESA_EMAIL_OPERADOR...",
+    initiateEntry: "INICIAR_ENTRADA",
+    processing: "PROCESANDO...",
+    alreadyRegistered: "OPERADOR_YA_REGISTRADO",
+    entryConfirmed: "ENTRADA_CONFIRMADA",
+    systemError: "ERROR_DEL_SISTEMA",
+    networkFailure: "FALLO_DE_RED",
+  },
+  systemLines: [
+    "[SISTEMA]: KERNEL_CARGADO",
+    "[RED]: BSC_MAINNET_CONECTADO",
+    "[CONTRATOS]: 3_DESPLEGADOS",
+    "[ESTADO]: LISTO_PARA_GUERRA",
+  ],
+  stats: [
+    { label: "MAX_JUGADORES", value: "1,000", sub: "Por Arena" },
+    { label: "COMISION", value: "5%", sub: "Del Pozo de Premios" },
+    { label: "LIQUIDACION", value: "ATOMICA", sub: "Pago Instantaneo" },
+    { label: "RED", value: "BSC", sub: "Binance Smart Chain" },
+  ],
+  arena: {
+    cards: [
+      {
+        title: "APOSTAR_BNB",
+        desc: "Bloquea BNB para entrar a la arena. El creador define la apuesta por jugador — todos aportan la misma cantidad. Tu apuesta alimenta el pozo que los ganadores drenan.",
+        statLabel: "CAPACIDAD",
+        statValue: "2 — 1,000 JUGADORES",
+      },
+      {
+        title: "OPTIMIZACION_SOL",
+        desc: "Escribe la solucion Solidity mas eficiente en gas. Tu bytecode se despliega on-chain via CREATE y se ejecuta con staticcall contra inputs de prueba deterministicos. Cada opcode cuenta.",
+        statLabel: "LIMITE_GAS",
+        statValue: "1,000,000 POR LLAMADA",
+      },
+      {
+        title: "DRENAR_EL_POZO",
+        desc: "El menor gas total gana. El contrato resuelve los ganadores automaticamente — el 95% del pozo apostado va al vencedor(es). Cobro tipo pull, sin fondos atascados. Nunca.",
+        statLabel: "PAGO",
+        statValue: "95% A GANADORES",
+      },
+    ],
+  },
+  sidebar: "ESTADO_PROTOCOLO_ACTIVO",
+  pipeline: {
+    title: "PIPELINE DE",
+    titleAccent: "EJECUCION",
+    titleEnd: "EN 6 FASES.",
+    desc: "Cada duelo sigue un pipeline trustless y deterministico — desde la inscripcion hasta el commit-reveal, la medicion de gas on-chain y la liquidacion atomica.",
+    phases: [
+      { phase: "ABIERTO", desc: "Jugadores se unen y apuestan BNB" },
+      { phase: "COMMIT", desc: "Envian keccak256(bytecode + salt)" },
+      { phase: "REVEAL", desc: "Revelan bytecode y salt on-chain" },
+      { phase: "EJECUTAR", desc: "Sandbox mide gas via staticcall" },
+      { phase: "RESUELTO", desc: "Ganadores reclaman el pozo" },
+      { phase: "CANCELADO", desc: "Reembolso de emergencia si es necesario" },
+    ],
+    terminalFile: "gas_measurement.sol",
+  },
+  security: {
+    label: "PROTOCOLO_ANTI_TRAMPA",
+    title: "TRUSTLESS POR",
+    titleAccent: "DISENO",
+    cards: [
+      {
+        title: "COMMIT_REVEAL",
+        desc: "Los jugadores envian keccak256(bytecode + salt) primero. Las soluciones permanecen ocultas hasta que todos los operadores hayan hecho commit. Sin espionaje.",
+      },
+      {
+        title: "BLOCKHASH_FUTURO",
+        desc: "Los inputs de prueba se generan con un block hash futuro — imposible de conocer al momento del commit. Previene ataques de simulacion y reversion.",
+      },
+      {
+        title: "SOLO_STATICCALL",
+        desc: "Todo el bytecode se ejecuta via staticcall. Sin SSTORE, sin SELFDESTRUCT, sin explotacion de reembolsos de gas. Computacion pura.",
+      },
+      {
+        title: "CUMPLE_EIP-170",
+        desc: "Tamano maximo de bytecode: 24,576 bytes segun EIP-170. Patron factory via EIP-1167 minimal proxy clones para eficiencia de gas.",
+      },
+    ],
+  },
+  features: {
+    title: "INGENIERIA PARA",
+    titleAccent: "MAXIMO RENDIMIENTO",
+    titleEnd: "EXTRAIBLE.",
+    items: [
+      "Clones Minimal Proxy EIP-1167",
+      "Generacion Deterministica de Pruebas",
+      "Ejecucion por Lotes para 1000 Jugadores",
+      "Cobro de Premios Tipo Pull",
+      "Cancelacion de Emergencia + Reembolso",
+    ],
+    badge1: "SISTEMA_ESTABLE",
+    badge2: "SOL_0.8.19",
+    coverageLabel: "COBERTURA: GasWarDuel.sol // GasWarFactory.sol // Sandbox.sol",
+  },
+  architecture: {
+    label: "ARQUITECTURA_DEL_SISTEMA",
+    title: "TRES CONTRATOS.",
+    titleAccent: "CERO",
+    contracts: [
+      {
+        name: "GasWarFactory",
+        role: "CENTRO_DE_MANDO",
+        lines: "260",
+        desc: "Despliega clones minimal proxy EIP-1167 por duelo. Controla comisiones globales, apuestas minimas y permisos de oraculo. Acumula comisiones de plataforma.",
+        functions: ["createDuel()", "setMinStake()", "withdrawFees()"],
+      },
+      {
+        name: "GasWarDuel",
+        role: "INSTANCIA_DE_BATALLA",
+        lines: "640",
+        desc: "Cada duelo es un clon independiente con su propio estado. Gestiona el ciclo de vida de 6 fases desde ABIERTO hasta RESUELTO. Maneja commits, reveals, ejecucion y distribucion de premios.",
+        functions: ["commit()", "reveal()", "executeBatch()", "claimPrize()"],
+      },
+      {
+        name: "Sandbox",
+        role: "ORACULO_DE_GAS",
+        lines: "105",
+        desc: "Contrato sin estado y reutilizable. Despliega bytecode de jugadores via CREATE, ejecuta inputs de prueba con staticcall y mide el consumo exacto de gas. Compartido entre todos los duelos.",
+        functions: ["deployAndMeasure()", "generateInput()", "verifyOutput()"],
+      },
+    ],
+  },
+  roadmap: {
+    label: "CALENDARIO_DE_DESPLIEGUE",
+    title: "LA",
+    titleAccent: "HOJA_DE_RUTA",
+    phases: [
+      {
+        phase: "FASE_01",
+        title: "LANZAMIENTO TESTNET BSC",
+        status: "COMPLETA",
+        items: [
+          "Contratos inteligentes V2 desplegados y verificados on-chain",
+          "Commit-reveal con PRNG de blockhash futuro",
+          "Ejecucion por lotes para hasta 1,000 jugadores",
+          "Patron factory EIP-1167 activo",
+        ],
+      },
+      {
+        phase: "FASE_02",
+        title: "FRONTEND Y BACKEND",
+        status: "EN_PROGRESO",
+        items: [
+          "Lobby de duelos en tiempo real con conteo de jugadores",
+          "Editor Solidity en navegador con estimacion de gas",
+          "API backend para indexado de duelos y eventos",
+          "Integracion de wallets (MetaMask, WalletConnect)",
+        ],
+      },
+      {
+        phase: "FASE_03",
+        title: "MAINNET Y COMPETENCIA",
+        status: "PENDIENTE",
+        items: [
+          "Despliegue en BSC mainnet y verificacion",
+          "Sistema de leaderboard con ranking",
+          "Torneos con formato de eliminacion",
+          "Biblioteca de retos con problemas curados",
+        ],
+      },
+      {
+        phase: "FASE_04",
+        title: "EXPANSION DEL PROTOCOLO",
+        status: "PLANEADO",
+        items: [
+          "Despliegue multi-chain (Ethereum, Arbitrum)",
+          "Gobernanza DAO para parametros de comision",
+          "Tipos de reto avanzados (Yul, Huff, bytecode raw)",
+          "SDK para creacion de arenas por terceros",
+        ],
+      },
+    ],
+  },
+  cta: {
+    title: "LISTO PARA",
+    titleAccent: "COMPETIR",
+    subtitle: "// UNETE A LA LISTA DE ESPERA. ACCESO ANTICIPADO. DOMINA LA ARENA.",
+    button: "INICIAR_ENTRADA",
+  },
+  footer: {
+    copyright: "\u00a9 2025 // OPTIMIZA_O_PERECE",
+    techLine: "Solidity 0.8.19 // EIP-1167 // EIP-170 // BSC Chain ID: 56",
+    systemsOperational: "TODOS_LOS_SISTEMAS_OPERATIVOS",
+    links: ["TWITTER", "DISCORD", "GITHUB", "DOCS"],
+  },
+  langModal: {
+    label: "SELECCIONAR_IDIOMA",
+    title: "ELIGE TU INTERFAZ",
+    subtitle: "// SELECT YOUR LANGUAGE",
+  },
+};

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useLanguage } from "@/i18n/context";
+import { LanguageModal } from "@/components/LanguageModal";
 
 /* ─── Scroll fade-in hook ─── */
 function useFadeUp() {
@@ -24,28 +26,52 @@ function FadeUp({ children, className = "" }: { children: React.ReactNode; class
 }
 
 /* ─── Animated counter ─── */
-function AnimatedCount({ value }: { value: number | null }) {
+function AnimatedCount({ value, locale }: { value: number | null; locale: string }) {
   const [display, setDisplay] = useState(0);
   useEffect(() => {
     if (value === null) return;
     const duration = 1200;
     const start = performance.now();
-    const from = 0;
     function tick(now: number) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.floor(from + (value! - from) * eased));
+      setDisplay(Math.floor(value! * eased));
       if (progress < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
   }, [value]);
   if (value === null) return <span className="cursor-blink">_</span>;
-  return <>{display.toLocaleString()}</>;
+  return <>{display.toLocaleString(locale)}</>;
 }
 
 /* ═══════════════════════════════════════════════ */
+const ARENA_ICONS = ["account_balance_wallet", "terminal", "data_exploration"];
+const ARENA_COLORS = [
+  { num: "text-primary-container/20", icon: "text-primary-container", stat: "text-primary-container" },
+  { num: "text-secondary-container/20", icon: "text-secondary-container", stat: "text-secondary-container" },
+  { num: "text-on-tertiary-container/20", icon: "text-on-tertiary-container", stat: "text-on-tertiary-container" },
+];
+const SECURITY_ICONS = ["lock", "casino", "shield", "verified"];
+const SECURITY_COLORS = [
+  { icon: "text-primary-container", border: "border-primary-container/20" },
+  { icon: "text-secondary-container", border: "border-secondary-container/20" },
+  { icon: "text-primary-container", border: "border-primary-container/20" },
+  { icon: "text-secondary-container", border: "border-secondary-container/20" },
+];
+const PIPELINE_COLORS = [
+  "bg-primary-container", "bg-primary-container",
+  "bg-secondary-container", "bg-secondary-container",
+  "bg-primary-container", "bg-on-tertiary-container",
+];
+const FEATURE_COLORS = [
+  "bg-primary-container", "bg-secondary-container", "bg-on-tertiary-container",
+  "bg-primary-container", "bg-secondary-container",
+];
+const ARCH_COLORS = ["primary-container", "secondary-container", "primary-container"];
+
 export default function Landing() {
+  const { t, locale, setLocale } = useLanguage();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -72,29 +98,31 @@ export default function Landing() {
       const data = await res.json();
       if (res.ok) {
         setStatus("success");
-        setMessage(data.message === "Already registered" ? "OPERATOR_ALREADY_REGISTERED" : "ENTRY_CONFIRMED");
+        setMessage(data.message === "Already registered" ? t.hero.alreadyRegistered : t.hero.entryConfirmed);
         setEmail("");
         if (data.count) setCount(data.count);
         else setCount((c) => (c !== null ? c + 1 : 1));
       } else {
         setStatus("error");
-        setMessage(data.error || "SYSTEM_ERROR");
+        setMessage(data.error || t.hero.systemError);
       }
     } catch {
       setStatus("error");
-      setMessage("NETWORK_FAILURE");
+      setMessage(t.hero.networkFailure);
     }
-  }, [email]);
+  }, [email, t]);
 
   const navLinks = [
-    { label: "PROTOCOL", href: "#protocol", active: true },
-    { label: "ARENA", href: "#arena" },
-    { label: "SECURITY", href: "#security" },
-    { label: "ROADMAP", href: "#roadmap" },
+    { label: t.nav.protocol, href: "#protocol", active: true },
+    { label: t.nav.arena, href: "#arena" },
+    { label: t.nav.security, href: "#security" },
+    { label: t.nav.roadmap, href: "#roadmap" },
   ];
 
   return (
     <>
+      <LanguageModal />
+
       {/* ══════ TOP NAVIGATION ══════ */}
       <nav className="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-md shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
         <div className="flex justify-between items-center px-6 py-4 max-w-full">
@@ -119,8 +147,15 @@ export default function Landing() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            {/* Language toggle */}
+            <button
+              onClick={() => setLocale(locale === "en" ? "es" : "en")}
+              className="font-mono text-[10px] tracking-widest text-white/40 hover:text-primary-container transition-colors px-2 py-1 border border-outline-variant/20 hover:border-primary-container/30"
+            >
+              {locale === "en" ? "ES" : "EN"}
+            </button>
             <button className="hidden md:block bg-primary-container text-on-primary font-headline font-bold px-4 py-2 text-xs tracking-widest hover:shadow-[0_0_12px_rgba(0,230,57,0.3)] transition-all duration-150 active:scale-95">
-              CONNECT_WALLET
+              {t.nav.connectWallet}
             </button>
             {/* Mobile hamburger */}
             <button
@@ -134,7 +169,6 @@ export default function Landing() {
             </button>
           </div>
         </div>
-        {/* Mobile menu dropdown */}
         {mobileMenu && (
           <div className="md:hidden bg-surface-container-lowest border-t border-outline-variant/15 px-6 py-4 space-y-3">
             {navLinks.map((l) => (
@@ -148,7 +182,7 @@ export default function Landing() {
               </a>
             ))}
             <button className="w-full bg-primary-container text-on-primary font-headline font-bold px-4 py-3 text-xs tracking-widest mt-2">
-              CONNECT_WALLET
+              {t.nav.connectWallet}
             </button>
           </div>
         )}
@@ -175,26 +209,24 @@ export default function Landing() {
                 <div className="w-1 h-4 bg-primary-container/40" />
                 <div className="w-1 h-4 bg-primary-container/20" />
               </div>
-              <div className="absolute top-2 right-2 font-mono text-[10px] text-primary-container/60">
-                MEM_SLOT_V4
-              </div>
+              <div className="absolute top-2 right-2 font-mono text-[10px] text-primary-container/60">MEM_SLOT_V4</div>
             </div>
           </div>
 
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-headline font-black tracking-tighter leading-none mb-4 text-white">
-            OPTIMIZE <span className="text-primary-container italic">OR</span> PERISH
+            {t.hero.title} <span className="text-primary-container italic">{t.hero.titleAccent}</span> {t.hero.titleEnd}
           </h1>
 
           <p className="font-mono text-sm md:text-base text-white/40 tracking-[0.2em] mb-12">
-            // HIGH-STAKES COMPETITIVE SOLIDITY ENGINEERING ON BSC
+            {t.hero.subtitle}
           </p>
 
           {/* ── WAITLIST BOX ── */}
           <div className="w-full max-w-md bg-surface-container-lowest border border-outline-variant/15 p-6 space-y-4 shadow-2xl">
             <div className="flex justify-between items-center mb-2">
-              <span className="font-mono text-[10px] text-primary-container">OPERATORS_REGISTERED</span>
+              <span className="font-mono text-[10px] text-primary-container">{t.hero.operatorsRegistered}</span>
               <span className="font-mono text-sm font-bold text-white tabular-nums">
-                <AnimatedCount value={count} />
+                <AnimatedCount value={count} locale={locale} />
               </span>
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-2">
@@ -203,14 +235,14 @@ export default function Landing() {
                 value={email}
                 onChange={(e) => { setEmail(e.target.value); setStatus("idle"); }}
                 className="bg-surface-container-high border-none text-white font-mono text-sm p-4 focus:ring-1 focus:ring-primary-container outline-none transition-all placeholder:text-white/20"
-                placeholder="ENTER_OPERATOR_EMAIL..."
+                placeholder={t.hero.emailPlaceholder}
               />
               <button
                 type="submit"
                 disabled={status === "loading"}
                 className="w-full bg-primary-container text-on-primary font-headline font-bold py-4 uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all active:scale-[0.98] disabled:opacity-50"
               >
-                {status === "loading" ? "PROCESSING..." : "INITIATE_ENTRY"}
+                {status === "loading" ? t.hero.processing : t.hero.initiateEntry}
               </button>
             </form>
             {status === "success" && (
@@ -222,13 +254,9 @@ export default function Landing() {
           </div>
         </div>
 
-        {/* Decorative system lines */}
         <div className="absolute bottom-10 left-10 hidden lg:block">
           <div className="font-mono text-[10px] text-white/20 space-y-1">
-            <div>[SYSTEM]: KERNEL_LOAD_OK</div>
-            <div>[NETWORK]: BSC_MAINNET_CONNECTED</div>
-            <div>[CONTRACTS]: 3_DEPLOYED</div>
-            <div>[STATUS]: WAR_READY</div>
+            {t.systemLines.map((line, i) => <div key={i}>{line}</div>)}
           </div>
         </div>
       </main>
@@ -237,12 +265,7 @@ export default function Landing() {
       <section className="bg-surface-container-lowest border-y border-outline-variant/15 py-6 px-6">
         <FadeUp>
           <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-0">
-            {[
-              { label: "MAX_PLAYERS", value: "1,000", sub: "Per Arena" },
-              { label: "PROTOCOL_FEE", value: "5%", sub: "Of Prize Pool" },
-              { label: "SETTLEMENT", value: "ATOMIC", sub: "Instant Payout" },
-              { label: "NETWORK", value: "BSC", sub: "Binance Smart Chain" },
-            ].map((s, i) => (
+            {t.stats.map((s, i) => (
               <div
                 key={s.label}
                 className={`p-6 md:p-8 ${i < 3 ? "border-r border-outline-variant/15" : ""} ${i < 2 ? "border-b md:border-b-0 border-outline-variant/15" : ""}`}
@@ -261,65 +284,28 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto">
           <FadeUp>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/15">
-              {/* 01 STAKE_BNB */}
-              <div className="p-10 border-b md:border-b-0 md:border-r border-outline-variant/15 hover:bg-surface-container-low transition-colors group">
-                <div className="flex justify-between items-start mb-12">
-                  <span className="font-headline text-5xl font-black text-white/10 group-hover:text-primary-container/20 transition-colors">01</span>
-                  <span className="material-symbols-outlined text-primary-container">account_balance_wallet</span>
-                </div>
-                <h3 className="font-headline text-2xl font-bold mb-4 tracking-tight uppercase text-white">STAKE_BNB</h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-8 font-body">
-                  Lock BNB to enter the arena. The creator sets the stake per player — all participants
-                  commit equal amounts. Your stake feeds the prize pool that winners drain.
-                </p>
-                <div className="space-y-2">
-                  <div className="h-[1px] w-full bg-outline-variant/20" />
-                  <div className="flex justify-between font-mono text-[10px]">
-                    <span className="text-white/30">CAPACITY</span>
-                    <span className="text-primary-container">2 — 1,000 PLAYERS</span>
+              {t.arena.cards.map((card, i) => (
+                <div
+                  key={card.title}
+                  className={`p-10 ${i < 2 ? "border-b md:border-b-0 md:border-r border-outline-variant/15" : ""} hover:bg-surface-container-low transition-colors group`}
+                >
+                  <div className="flex justify-between items-start mb-12">
+                    <span className={`font-headline text-5xl font-black text-white/10 group-hover:${ARENA_COLORS[i].num} transition-colors`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className={`material-symbols-outlined ${ARENA_COLORS[i].icon}`}>{ARENA_ICONS[i]}</span>
+                  </div>
+                  <h3 className="font-headline text-2xl font-bold mb-4 tracking-tight uppercase text-white">{card.title}</h3>
+                  <p className="text-white/50 text-sm leading-relaxed mb-8 font-body">{card.desc}</p>
+                  <div className="space-y-2">
+                    <div className="h-[1px] w-full bg-outline-variant/20" />
+                    <div className="flex justify-between font-mono text-[10px]">
+                      <span className="text-white/30">{card.statLabel}</span>
+                      <span className={ARENA_COLORS[i].stat}>{card.statValue}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* 02 SOL_OPTIMIZATION */}
-              <div className="p-10 border-b md:border-b-0 md:border-r border-outline-variant/15 hover:bg-surface-container-low transition-colors group">
-                <div className="flex justify-between items-start mb-12">
-                  <span className="font-headline text-5xl font-black text-white/10 group-hover:text-secondary-container/20 transition-colors">02</span>
-                  <span className="material-symbols-outlined text-secondary-container">terminal</span>
-                </div>
-                <h3 className="font-headline text-2xl font-bold mb-4 tracking-tight uppercase text-white">SOL_OPTIMIZATION</h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-8 font-body">
-                  Write the most gas-efficient Solidity solution. Your bytecode is deployed on-chain via CREATE,
-                  then executed with staticcall against deterministic test inputs. Every opcode counts.
-                </p>
-                <div className="space-y-2">
-                  <div className="h-[1px] w-full bg-outline-variant/20" />
-                  <div className="flex justify-between font-mono text-[10px]">
-                    <span className="text-white/30">GAS_LIMIT</span>
-                    <span className="text-secondary-container">1,000,000 PER CALL</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* 03 LIQUID_SETTLEMENT */}
-              <div className="p-10 hover:bg-surface-container-low transition-colors group">
-                <div className="flex justify-between items-start mb-12">
-                  <span className="font-headline text-5xl font-black text-white/10 group-hover:text-on-tertiary-container/20 transition-colors">03</span>
-                  <span className="material-symbols-outlined text-on-tertiary-container">data_exploration</span>
-                </div>
-                <h3 className="font-headline text-2xl font-bold mb-4 tracking-tight uppercase text-white">DRAIN_THE_POOL</h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-8 font-body">
-                  Lowest total gas wins. The contract resolves winners automatically — 95% of the
-                  staked pool goes to the victor(s). Pull-based claims, no stuck funds. Ever.
-                </p>
-                <div className="space-y-2">
-                  <div className="h-[1px] w-full bg-outline-variant/20" />
-                  <div className="flex justify-between font-mono text-[10px]">
-                    <span className="text-white/30">PAYOUT</span>
-                    <span className="text-on-tertiary-container">95% TO WINNERS</span>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </FadeUp>
         </div>
@@ -329,7 +315,7 @@ export default function Landing() {
       <aside className="fixed left-0 top-1/2 -translate-y-1/2 h-96 w-1 bg-primary-container/20 flex-col justify-between py-4 items-center hidden xl:flex">
         <span className="material-symbols-outlined text-[10px] text-primary-container">north</span>
         <div className="rotate-90 origin-center whitespace-nowrap font-mono text-[8px] tracking-[0.5em] text-white/20 uppercase">
-          PROTOCOL_STATUS_ACTIVE
+          {t.sidebar}
         </div>
         <span className="material-symbols-outlined text-[10px] text-primary-container">south</span>
       </aside>
@@ -340,25 +326,15 @@ export default function Landing() {
           <FadeUp>
             <div className="space-y-8">
               <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                6-PHASE<br />
-                <span className="text-primary-container">EXECUTION</span> PIPELINE.
+                {t.pipeline.title}<br />
+                <span className="text-primary-container">{t.pipeline.titleAccent}</span> {t.pipeline.titleEnd}
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed font-body max-w-md">
-                Each duel follows a trustless, deterministic pipeline — from open enrollment through
-                commit-reveal to on-chain gas measurement and atomic settlement.
-              </p>
+              <p className="text-white/50 text-sm leading-relaxed font-body max-w-md">{t.pipeline.desc}</p>
               <div className="space-y-3">
-                {[
-                  { phase: "OPEN", desc: "Players join & stake BNB", color: "bg-primary-container" },
-                  { phase: "COMMIT", desc: "Submit keccak256(bytecode + salt)", color: "bg-primary-container" },
-                  { phase: "REVEAL", desc: "Reveal bytecode & salt on-chain", color: "bg-secondary-container" },
-                  { phase: "EXECUTE", desc: "Sandbox measures gas via staticcall", color: "bg-secondary-container" },
-                  { phase: "RESOLVED", desc: "Winners claim prize pool", color: "bg-primary-container" },
-                  { phase: "CANCELLED", desc: "Emergency refund if needed", color: "bg-on-tertiary-container" },
-                ].map((p) => (
+                {t.pipeline.phases.map((p, i) => (
                   <div key={p.phase} className="flex items-center gap-4">
-                    <div className={`w-10 h-[1px] ${p.color}`} />
-                    <span className="font-mono text-[10px] text-white/40 w-20">{p.phase}</span>
+                    <div className={`w-10 h-[1px] ${PIPELINE_COLORS[i]}`} />
+                    <span className="font-mono text-[10px] text-white/40 w-24">{p.phase}</span>
                     <span className="font-mono text-xs text-white/60 uppercase tracking-widest">{p.desc}</span>
                   </div>
                 ))}
@@ -366,17 +342,15 @@ export default function Landing() {
             </div>
           </FadeUp>
 
-          {/* Terminal code block */}
           <FadeUp>
             <div className="relative bg-surface-container-lowest border border-outline-variant/15 overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-              {/* Terminal header */}
               <div className="flex items-center justify-between px-4 py-3 bg-surface-container border-b border-outline-variant/15">
                 <div className="flex items-center gap-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-on-tertiary-container/60" />
                   <div className="w-2.5 h-2.5 rounded-full bg-primary-container/30" />
                   <div className="w-2.5 h-2.5 rounded-full bg-primary-container/60" />
                 </div>
-                <span className="font-mono text-[10px] text-white/30 uppercase">gas_measurement.sol</span>
+                <span className="font-mono text-[10px] text-white/30 uppercase">{t.pipeline.terminalFile}</span>
               </div>
               <pre className="p-6 font-mono text-[11px] leading-relaxed overflow-x-auto">
                 <code>
@@ -408,47 +382,18 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto">
           <FadeUp>
             <div className="mb-16">
-              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">ANTI_CHEAT_PROTOCOL</span>
+              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.security.label}</span>
               <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                TRUSTLESS BY <span className="text-secondary-container">DESIGN</span>.
+                {t.security.title} <span className="text-secondary-container">{t.security.titleAccent}</span>.
               </h2>
             </div>
           </FadeUp>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: "lock",
-                title: "COMMIT_REVEAL",
-                desc: "Players submit keccak256(bytecode + salt) first. Solutions stay hidden until all operators have committed. No peeking.",
-                color: "text-primary-container",
-                border: "border-primary-container/20",
-              },
-              {
-                icon: "casino",
-                title: "FUTURE_BLOCKHASH",
-                desc: "Test inputs are seeded from a future block hash — unknowable at commit time. Prevents simulate-and-revert attacks.",
-                color: "text-secondary-container",
-                border: "border-secondary-container/20",
-              },
-              {
-                icon: "shield",
-                title: "STATICCALL_ONLY",
-                desc: "All bytecode is executed via staticcall. No SSTORE, no SELFDESTRUCT, no gas refund exploitation. Pure computation.",
-                color: "text-primary-container",
-                border: "border-primary-container/20",
-              },
-              {
-                icon: "verified",
-                title: "EIP-170_COMPLIANT",
-                desc: "Max bytecode size: 24,576 bytes per EIP-170. Factory pattern via EIP-1167 minimal proxy clones for gas efficiency.",
-                color: "text-secondary-container",
-                border: "border-secondary-container/20",
-              },
-            ].map((card) => (
+            {t.security.cards.map((card, i) => (
               <FadeUp key={card.title}>
-                <div className={`bg-surface-container-low p-8 border-l-2 ${card.border} hover:bg-surface-container transition-colors h-full`}>
-                  <span className={`material-symbols-outlined ${card.color} mb-6 block`}>{card.icon}</span>
+                <div className={`bg-surface-container-low p-8 border-l-2 ${SECURITY_COLORS[i].border} hover:bg-surface-container transition-colors h-full`}>
+                  <span className={`material-symbols-outlined ${SECURITY_COLORS[i].icon} mb-6 block`}>{SECURITY_ICONS[i]}</span>
                   <h4 className="font-headline text-sm font-bold text-white uppercase tracking-widest mb-4">{card.title}</h4>
                   <p className="text-white/40 text-sm leading-relaxed font-body">{card.desc}</p>
                 </div>
@@ -464,27 +409,20 @@ export default function Landing() {
           <FadeUp>
             <div className="space-y-8">
               <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                ENGINEERED FOR <br />
-                <span className="text-secondary-container">MAXIMAL EXTRACTABLE</span> PERFORMANCE.
+                {t.features.title} <br />
+                <span className="text-secondary-container">{t.features.titleAccent}</span> {t.features.titleEnd}
               </h2>
               <div className="space-y-4">
-                {[
-                  { color: "bg-primary-container", text: "EIP-1167 Minimal Proxy Clones" },
-                  { color: "bg-secondary-container", text: "Deterministic Test Generation" },
-                  { color: "bg-on-tertiary-container", text: "Batched Execution For 1000 Players" },
-                  { color: "bg-primary-container", text: "Pull-Based Prize Claims" },
-                  { color: "bg-secondary-container", text: "Emergency Cancel + Refund Safety" },
-                ].map((f) => (
-                  <div key={f.text} className="flex items-center gap-4">
-                    <div className={`w-12 h-[1px] ${f.color}`} />
-                    <span className="font-mono text-xs text-white/60 uppercase tracking-widest">{f.text}</span>
+                {t.features.items.map((item, i) => (
+                  <div key={item} className="flex items-center gap-4">
+                    <div className={`w-12 h-[1px] ${FEATURE_COLORS[i]}`} />
+                    <span className="font-mono text-xs text-white/60 uppercase tracking-widest">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
           </FadeUp>
 
-          {/* Visual block */}
           <FadeUp>
             <div className="relative aspect-square bg-surface-container-low overflow-hidden group border border-outline-variant/10">
               <div className="absolute inset-0 bg-gradient-to-tr from-surface-container-lowest to-transparent" />
@@ -514,17 +452,11 @@ contract GasWarFactory is Ownable {
                 </pre>
               </div>
               <div className="absolute top-4 right-4 flex gap-2">
-                <span className="px-2 py-1 bg-primary-container text-on-primary font-mono text-[8px] font-bold">
-                  SYSTEM_STABLE
-                </span>
-                <span className="px-2 py-1 bg-surface-container-highest text-white font-mono text-[8px] font-bold">
-                  SOL_0.8.19
-                </span>
+                <span className="px-2 py-1 bg-primary-container text-on-primary font-mono text-[8px] font-bold">{t.features.badge1}</span>
+                <span className="px-2 py-1 bg-surface-container-highest text-white font-mono text-[8px] font-bold">{t.features.badge2}</span>
               </div>
               <div className="absolute bottom-8 left-8 right-8">
-                <div className="font-mono text-[10px] text-primary-container/80 mb-2">
-                  CONTRACT_COVERAGE: GasWarDuel.sol // GasWarFactory.sol // Sandbox.sol
-                </div>
+                <div className="font-mono text-[10px] text-primary-container/80 mb-2">{t.features.coverageLabel}</div>
                 <div className="h-1 w-full bg-white/5 overflow-hidden">
                   <div className="h-full bg-primary-container w-full" />
                 </div>
@@ -539,45 +471,20 @@ contract GasWarFactory is Ownable {
         <div className="max-w-7xl mx-auto">
           <FadeUp>
             <div className="mb-16">
-              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">SYSTEM_ARCHITECTURE</span>
+              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.architecture.label}</span>
               <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                THREE CONTRACTS. <span className="text-primary-container">ZERO</span> TRUST.
+                {t.architecture.title} <span className="text-primary-container">{t.architecture.titleAccent}</span> TRUST.
               </h2>
             </div>
           </FadeUp>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "GasWarFactory",
-                role: "COMMAND_CENTER",
-                lines: "260",
-                desc: "Deploys EIP-1167 minimal proxy clones per duel. Controls global fees, stake minimums, and oracle permissions. Accumulates platform fees.",
-                functions: ["createDuel()", "setMinStake()", "withdrawFees()"],
-                color: "primary-container",
-              },
-              {
-                name: "GasWarDuel",
-                role: "BATTLE_INSTANCE",
-                lines: "640",
-                desc: "Each duel is an independent clone with its own state. Manages the 6-phase lifecycle from OPEN to RESOLVED. Handles commits, reveals, execution, and prize distribution.",
-                functions: ["commit()", "reveal()", "executeBatch()", "claimPrize()"],
-                color: "secondary-container",
-              },
-              {
-                name: "Sandbox",
-                role: "GAS_ORACLE",
-                lines: "105",
-                desc: "Stateless, reusable contract. Deploys player bytecode via CREATE, executes test inputs with staticcall, and measures exact gas consumption. Shared across all duels.",
-                functions: ["deployAndMeasure()", "generateInput()", "verifyOutput()"],
-                color: "primary-container",
-              },
-            ].map((c) => (
+            {t.architecture.contracts.map((c, i) => (
               <FadeUp key={c.name}>
                 <div className="bg-surface-container-low p-8 hover:bg-surface-container transition-colors h-full flex flex-col">
                   <div className="flex justify-between items-start mb-6">
                     <div>
-                      <div className={`font-mono text-[10px] text-${c.color} mb-1`}>{c.role}</div>
+                      <div className={`font-mono text-[10px] text-${ARCH_COLORS[i]} mb-1`}>{c.role}</div>
                       <h4 className="font-headline text-xl font-bold text-white">{c.name}.sol</h4>
                     </div>
                     <span className="font-mono text-[10px] text-white/20">{c.lines} LOC</span>
@@ -585,7 +492,7 @@ contract GasWarFactory is Ownable {
                   <p className="text-white/40 text-sm leading-relaxed font-body mb-6 flex-grow">{c.desc}</p>
                   <div className="space-y-1">
                     {c.functions.map((fn) => (
-                      <div key={fn} className={`font-mono text-[10px] text-${c.color}/60`}>
+                      <div key={fn} className={`font-mono text-[10px] text-${ARCH_COLORS[i]}/60`}>
                         <span className="text-white/20 mr-2">&gt;</span>{fn}
                       </div>
                     ))}
@@ -602,86 +509,46 @@ contract GasWarFactory is Ownable {
         <div className="max-w-7xl mx-auto">
           <FadeUp>
             <div className="mb-16">
-              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">DEPLOYMENT_SCHEDULE</span>
+              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.roadmap.label}</span>
               <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                THE <span className="text-primary-container">ROADMAP</span>.
+                {t.roadmap.title} <span className="text-primary-container">{t.roadmap.titleAccent}</span>.
               </h2>
             </div>
           </FadeUp>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                phase: "PHASE_01",
-                title: "BSC TESTNET LAUNCH",
-                status: "COMPLETE",
-                statusColor: "text-primary-container",
-                items: [
-                  "V2 smart contracts deployed & verified on-chain",
-                  "Commit-reveal with future blockhash PRNG",
-                  "Batched execution for up to 1,000 players",
-                  "EIP-1167 factory pattern live",
-                ],
-              },
-              {
-                phase: "PHASE_02",
-                title: "FRONTEND & BACKEND",
-                status: "IN_PROGRESS",
-                statusColor: "text-secondary-container",
-                items: [
-                  "Real-time duel lobby with live player count",
-                  "In-browser Solidity editor with gas estimation",
-                  "Backend API for duel indexing & events",
-                  "Wallet integration (MetaMask, WalletConnect)",
-                ],
-              },
-              {
-                phase: "PHASE_03",
-                title: "MAINNET & COMPETITION",
-                status: "PENDING",
-                statusColor: "text-white/30",
-                items: [
-                  "BSC mainnet deployment & verification",
-                  "Ranked leaderboard system",
-                  "Tournament brackets with elimination rounds",
-                  "Challenge library with curated problems",
-                ],
-              },
-              {
-                phase: "PHASE_04",
-                title: "PROTOCOL EXPANSION",
-                status: "PLANNED",
-                statusColor: "text-white/30",
-                items: [
-                  "Multi-chain deployment (Ethereum, Arbitrum)",
-                  "DAO governance for fee parameters",
-                  "Advanced challenge types (Yul, Huff, raw bytecode)",
-                  "SDK for third-party arena creation",
-                ],
-              },
-            ].map((r) => (
-              <FadeUp key={r.phase}>
-                <div className="bg-surface-container-low p-8 hover:bg-surface-container transition-colors h-full">
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <div className="font-mono text-[10px] text-white/30 mb-1">{r.phase}</div>
-                      <h4 className="font-headline text-lg font-bold text-white uppercase">{r.title}</h4>
-                    </div>
-                    <span className={`font-mono text-[10px] ${r.statusColor} uppercase`}>{r.status}</span>
-                  </div>
-                  <div className="space-y-3">
-                    {r.items.map((item, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <span className="text-primary-container font-mono text-[10px] mt-0.5">
-                          {r.status === "COMPLETE" ? "+" : ">"}
-                        </span>
-                        <span className="text-white/50 text-sm font-body">{item}</span>
+            {t.roadmap.phases.map((r) => {
+              const statusColor =
+                r.status === "COMPLETE" || r.status === "COMPLETA"
+                  ? "text-primary-container"
+                  : r.status === "IN_PROGRESS" || r.status === "EN_PROGRESO"
+                  ? "text-secondary-container"
+                  : "text-white/30";
+              const isComplete = r.status === "COMPLETE" || r.status === "COMPLETA";
+              return (
+                <FadeUp key={r.phase}>
+                  <div className="bg-surface-container-low p-8 hover:bg-surface-container transition-colors h-full">
+                    <div className="flex justify-between items-start mb-6">
+                      <div>
+                        <div className="font-mono text-[10px] text-white/30 mb-1">{r.phase}</div>
+                        <h4 className="font-headline text-lg font-bold text-white uppercase">{r.title}</h4>
                       </div>
-                    ))}
+                      <span className={`font-mono text-[10px] ${statusColor} uppercase`}>{r.status}</span>
+                    </div>
+                    <div className="space-y-3">
+                      {r.items.map((item, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <span className="text-primary-container font-mono text-[10px] mt-0.5">
+                            {isComplete ? "+" : ">"}
+                          </span>
+                          <span className="text-white/50 text-sm font-body">{item}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </FadeUp>
-            ))}
+                </FadeUp>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -691,16 +558,14 @@ contract GasWarFactory is Ownable {
         <FadeUp>
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-6xl font-headline font-black text-white tracking-tighter uppercase leading-none mb-6">
-              READY TO <span className="text-primary-container">COMPETE</span>?
+              {t.cta.title} <span className="text-primary-container">{t.cta.titleAccent}</span>?
             </h2>
-            <p className="font-mono text-sm text-white/40 tracking-[0.15em] mb-10">
-              // JOIN THE WAITLIST. GET EARLY ACCESS. DOMINATE THE ARENA.
-            </p>
+            <p className="font-mono text-sm text-white/40 tracking-[0.15em] mb-10">{t.cta.subtitle}</p>
             <a
               href="#protocol"
               className="inline-block bg-primary-container text-on-primary font-headline font-bold py-4 px-12 uppercase tracking-[0.2em] hover:shadow-[0_0_20px_rgba(0,255,65,0.4)] transition-all active:scale-[0.98] text-sm"
             >
-              INITIATE_ENTRY
+              {t.cta.button}
             </a>
           </div>
         </FadeUp>
@@ -711,12 +576,10 @@ contract GasWarFactory is Ownable {
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <span className="text-primary-container font-bold font-headline tracking-widest">0xGASWARS</span>
-            <span className="font-mono text-[10px] text-white/30 tracking-widest uppercase">
-              &copy; 2025 // OPTIMIZE_OR_DIE
-            </span>
+            <span className="font-mono text-[10px] text-white/30 tracking-widest uppercase">{t.footer.copyright}</span>
           </div>
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-            {["TWITTER", "DISCORD", "GITHUB", "DOCS"].map((link) => (
+            {t.footer.links.map((link) => (
               <a
                 key={link}
                 className="font-mono text-[10px] uppercase tracking-widest text-white/30 hover:text-secondary-container transition-colors duration-200"
@@ -728,14 +591,10 @@ contract GasWarFactory is Ownable {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 md:px-12 mt-6 pt-6 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="font-mono text-[9px] text-white/15 uppercase tracking-widest">
-            Solidity 0.8.19 // EIP-1167 // EIP-170 // BSC Chain ID: 56
-          </div>
+          <div className="font-mono text-[9px] text-white/15 uppercase tracking-widest">{t.footer.techLine}</div>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse" />
-            <span className="font-mono text-[9px] text-primary-container/50 uppercase tracking-widest">
-              ALL_SYSTEMS_OPERATIONAL
-            </span>
+            <span className="font-mono text-[9px] text-primary-container/50 uppercase tracking-widest">{t.footer.systemsOperational}</span>
           </div>
         </div>
       </footer>
