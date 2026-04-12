@@ -114,6 +114,7 @@ export const en: Dictionary = {
     label: "SYSTEM_ARCHITECTURE",
     title: "THREE CONTRACTS.",
     titleAccent: "ZERO",
+    titleEnd: "TRUST.",
     contracts: [
       {
         name: "GasWarFactory",

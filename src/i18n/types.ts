@@ -93,6 +93,7 @@ export interface Dictionary {
     label: string;
     title: string;
     titleAccent: string;
+    titleEnd: string;
     contracts: ContractCard[];
   };
   roadmap: {

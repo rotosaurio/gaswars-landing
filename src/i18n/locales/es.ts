@@ -11,7 +11,7 @@ export const es: Dictionary = {
   hero: {
     title: "OPTIMIZA",
     titleAccent: "O",
-    titleEnd: "PERECE",
+    titleEnd: "MUERE",
     subtitle: "// INGENIERIA COMPETITIVA DE SOLIDITY EN BSC",
     operatorsRegistered: "OPERADORES_REGISTRADOS",
     emailPlaceholder: "INGRESA_EMAIL_OPERADOR...",
@@ -114,6 +114,7 @@ export const es: Dictionary = {
     label: "ARQUITECTURA_DEL_SISTEMA",
     title: "TRES CONTRATOS.",
     titleAccent: "CERO",
+    titleEnd: "CONFIANZA.",
     contracts: [
       {
         name: "GasWarFactory",
@@ -196,7 +197,7 @@ export const es: Dictionary = {
     button: "INICIAR_ENTRADA",
   },
   footer: {
-    copyright: "\u00a9 2025 // OPTIMIZA_O_PERECE",
+    copyright: "\u00a9 2025 // OPTIMIZA_O_MUERE",
     techLine: "Solidity 0.8.19 // EIP-1167 // EIP-170 // BSC Chain ID: 56",
     systemsOperational: "TODOS_LOS_SISTEMAS_OPERATIVOS",
     links: ["TWITTER", "DISCORD", "GITHUB", "DOCS"],

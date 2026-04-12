@@ -473,7 +473,7 @@ contract GasWarFactory is Ownable {
             <div className="mb-16">
               <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.architecture.label}</span>
               <h2 className="text-4xl md:text-5xl font-headline font-bold text-white tracking-tighter uppercase leading-none">
-                {t.architecture.title} <span className="text-primary-container">{t.architecture.titleAccent}</span> TRUST.
+                {t.architecture.title} <span className="text-primary-container">{t.architecture.titleAccent}</span> {t.architecture.titleEnd}
               </h2>
             </div>
           </FadeUp>
