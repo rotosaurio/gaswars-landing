@@ -42,19 +42,19 @@ const docs = {
       intro: "GasWars is not gambling. There's no luck involved — the most efficient code always wins. Think of it more like a chess tournament with a prize pool: you enter because you're skilled, not because you're lucky.",
       streams: [
         {
-          title: "Duels — skill-based prize pools",
-          desc: "Multiple developers each put in the same entry fee. All the fees go into a shared pool. The developer who writes the most efficient solution wins the pool. It's not \"betting\" — it's proving your code is better than everyone else's, with money backing your confidence.",
-          example: "Example: 10 developers enter a duel with a $5 entry fee each. The pool is $50. The winner takes the pool.",
-        },
-        {
           title: "Bounties — companies pay you to optimize",
-          desc: "A company has code that's inefficient and wants it optimized. They post a bounty — say $1,000 — and hundreds of developers compete to submit the most optimized version. The best solution wins the bounty. You don't pay anything to enter. The company pays, you earn.",
-          example: "Example: A DeFi protocol posts a $2,000 bounty to optimize their swap function. 200 developers compete. The winner gets the bounty.",
+          desc: "A company has code that's inefficient and wants it optimized. They post a bounty and hundreds of developers compete to submit the most optimized version. The best solution wins the bounty. You don't pay anything to enter. The company pays, you earn.",
+          example: "Example: A DeFi protocol posts a $2,000 bounty to optimize their swap function. 200 developers compete for free. The winner gets the bounty.",
         },
         {
-          title: "Bounty Wars — guaranteed floor + player stakes",
-          desc: "A sponsor puts up a guaranteed prize (like a poker tournament guarantee), and players can also add entry fees on top. Even if only a few players join, the minimum prize is guaranteed by the sponsor. If lots of players join, the pool grows even bigger.",
-          example: "Example: Sponsor guarantees $500. 20 players add $10 each. Total pool: $700. Winner takes the pool.",
+          title: "Bounty Wars — guaranteed floor + optional player stakes",
+          desc: "A sponsor puts up a guaranteed prize, and players can optionally add entry fees on top to grow the pool. Even if only a few players join, the minimum prize is guaranteed by the sponsor. If lots of players join, the pool grows even bigger.",
+          example: "Example: Sponsor guarantees $500. 20 players optionally add $10 each. Total pool: $700. Winner takes the pool.",
+        },
+        {
+          title: "Duels — optional skill-based prize pools",
+          desc: "For competitive devs who want to back their skills with real stakes. Multiple developers each put in the same entry fee. The developer who writes the most efficient solution wins the pool. This mode is optional — you never have to play it.",
+          example: "Example: 10 developers enter a duel with a $5 entry fee each. The pool is $50. The winner takes the pool.",
         },
         {
           title: "Training — learn for free, zero risk",
@@ -83,28 +83,28 @@ const docs = {
       titleAccent: "compete.",
       items: [
         {
-          title: "TRAINING",
-          tier: "FREE",
-          desc: "Practice without risk. Same challenges as the real arenas, but no money involved and no ranking impact. Perfect for learning, testing strategies, or just having fun.",
-          highlights: ["No entry fee", "No ranking impact", "Same real challenges", "Unlimited attempts"],
-        },
-        {
-          title: "DUEL",
-          tier: "RANKED",
-          desc: "The classic mode. Everyone pays the same entry fee, which goes into a shared prize pool. Write the most efficient solution and take 95% of the pool. Pure skill, real money.",
-          highlights: ["Equal entry fee for all", "Winner takes 95%", "2 to 1,000 players per arena", "Global leaderboard ranking"],
-        },
-        {
           title: "BOUNTY",
           tier: "RANKED",
-          desc: "A company or sponsor posts a reward for solving an optimization problem. Developers compete for free — no entry fee required. The best solution wins the bounty. Great for companies that want their code optimized by hundreds of devs competing at once.",
-          highlights: ["Sponsor funds the prize", "Free entry for developers", "Real-world optimization problems", "Global leaderboard ranking"],
+          desc: "A company posts a real optimization problem with a prize. Developers compete for free — no entry fee. The best solution wins the reward. The company gets better code, you get paid. No risk for developers.",
+          highlights: ["Free entry for developers", "Sponsor funds the entire prize", "Real-world optimization problems", "Global leaderboard ranking"],
         },
         {
           title: "BOUNTY WAR",
           tier: "RANKED // MAX",
-          desc: "The ultimate mode. A sponsor posts a guaranteed bounty, AND players add their own entry fees on top. Think of it like a poker tournament with a guaranteed prize pool — the floor is set by the sponsor, but the total pot keeps growing as more players join. Maximum stakes, maximum reward.",
-          highlights: ["Guaranteed bounty + player entry fees", "Largest possible prize pools", "Sponsor sets minimum prize floor", "Elite competition"],
+          desc: "A sponsor posts a guaranteed prize, and players can optionally add entry fees to grow the pool even bigger. Think of it as a tournament with a guaranteed minimum — the more players join, the bigger the reward.",
+          highlights: ["Guaranteed prize from sponsor", "Optional player entry fees", "Largest possible prize pools", "Elite competition"],
+        },
+        {
+          title: "DUEL",
+          tier: "RANKED",
+          desc: "Optional mode for competitive devs. Players stake equal amounts and compete head-to-head. The most efficient solution wins the pool. Only for developers who want to back their skills with real stakes.",
+          highlights: ["Equal stake per player", "Winner takes the pool", "2 to 1,000 players per arena", "Global leaderboard ranking"],
+        },
+        {
+          title: "TRAINING",
+          tier: "FREE",
+          desc: "Practice without risk. Same challenges as the real arenas, but no money involved and no ranking impact. Perfect for learning, testing strategies, or just having fun before entering paid modes.",
+          highlights: ["No entry fee", "No ranking impact", "Same real challenges", "Unlimited attempts"],
         },
       ],
     },
@@ -200,19 +200,19 @@ const docs = {
       intro: "GasWars no es apuestas. No hay suerte involucrada — el codigo mas eficiente siempre gana. Piensa en ello como un torneo de ajedrez con pozo de premios: entras porque eres habil, no porque tienes suerte.",
       streams: [
         {
-          title: "Duelos — pozos basados en habilidad",
-          desc: "Varios desarrolladores ponen la misma cuota de entrada. Todas las cuotas van a un pozo compartido. El desarrollador que escribe la solucion mas eficiente gana el pozo. No es \"apostar\" — es demostrar que tu codigo es mejor que el de todos, respaldando tu confianza con dinero.",
-          example: "Ejemplo: 10 desarrolladores entran a un duelo con $5 de cuota cada uno. El pozo es $50. El ganador se lleva el pozo.",
-        },
-        {
           title: "Bounties — empresas te pagan por optimizar",
-          desc: "Una empresa tiene codigo ineficiente y quiere optimizarlo. Publica un bounty — digamos $1,000 — y cientos de desarrolladores compiten por enviar la version mas optimizada. La mejor solucion gana el bounty. Tu no pagas nada por entrar. La empresa paga, tu ganas.",
-          example: "Ejemplo: Un protocolo DeFi publica un bounty de $2,000 para optimizar su funcion de swap. 200 desarrolladores compiten. El ganador obtiene el bounty.",
+          desc: "Una empresa tiene codigo ineficiente y quiere optimizarlo. Publica un bounty y cientos de desarrolladores compiten por enviar la version mas optimizada. La mejor solucion gana el bounty. Tu no pagas nada por entrar. La empresa paga, tu ganas.",
+          example: "Ejemplo: Un protocolo DeFi publica un bounty de $2,000 para optimizar su funcion de swap. 200 desarrolladores compiten gratis. El ganador obtiene el bounty.",
         },
         {
-          title: "Bounty Wars — piso garantizado + apuestas de jugadores",
-          desc: "Un sponsor pone un premio garantizado (como la garantia de un torneo de poker), y los jugadores tambien pueden agregar cuotas de entrada encima. Aunque pocos jugadores se unan, el premio minimo esta garantizado por el sponsor. Si muchos jugadores se unen, el pozo crece aun mas.",
-          example: "Ejemplo: Sponsor garantiza $500. 20 jugadores agregan $10 cada uno. Pozo total: $700. El ganador se lleva el pozo.",
+          title: "Bounty Wars — piso garantizado + cuotas opcionales",
+          desc: "Un sponsor pone un premio garantizado, y los jugadores pueden opcionalmente agregar cuotas de entrada para hacer crecer el pozo. Aunque pocos jugadores se unan, el premio minimo esta garantizado por el sponsor. Si muchos se unen, el pozo crece aun mas.",
+          example: "Ejemplo: Sponsor garantiza $500. 20 jugadores opcionalmente agregan $10 cada uno. Pozo total: $700. El ganador se lleva el pozo.",
+        },
+        {
+          title: "Duelos — pozos opcionales basados en habilidad",
+          desc: "Para devs competitivos que quieran respaldar sus habilidades con stakes reales. Varios desarrolladores ponen la misma cuota de entrada. El que escribe la solucion mas eficiente gana el pozo. Este modo es opcional — nunca tienes que jugarlo.",
+          example: "Ejemplo: 10 desarrolladores entran a un duelo con $5 de cuota cada uno. El pozo es $50. El ganador se lleva el pozo.",
         },
         {
           title: "Training — aprende gratis, cero riesgo",
@@ -241,28 +241,28 @@ const docs = {
       titleAccent: "competir.",
       items: [
         {
-          title: "TRAINING",
-          tier: "GRATIS",
-          desc: "Practica sin riesgo. Los mismos retos que las arenas reales, pero sin dinero y sin impacto en tu ranking. Perfecto para aprender, probar estrategias, o simplemente divertirte.",
-          highlights: ["Sin cuota de entrada", "Sin impacto en ranking", "Mismos retos reales", "Intentos ilimitados"],
-        },
-        {
-          title: "DUELO",
-          tier: "RANKED",
-          desc: "El modo clasico. Todos pagan la misma cuota de entrada, que va a un pozo compartido. Escribe la solucion mas eficiente y llevate el 95% del pozo. Pura habilidad, dinero real.",
-          highlights: ["Cuota de entrada igual para todos", "Ganador se lleva 95%", "2 a 1,000 jugadores por arena", "Ranking en leaderboard global"],
-        },
-        {
           title: "BOUNTY",
           tier: "RANKED",
-          desc: "Una empresa o sponsor publica una recompensa por resolver un problema de optimizacion. Los desarrolladores compiten gratis — sin cuota de entrada. La mejor solucion gana el bounty. Ideal para empresas que quieren su codigo optimizado por cientos de devs compitiendo a la vez.",
-          highlights: ["El sponsor financia el premio", "Entrada gratis para devs", "Problemas de optimizacion reales", "Ranking en leaderboard global"],
+          desc: "Una empresa publica un problema de optimizacion real con un premio. Los desarrolladores compiten gratis — sin cuota de entrada. La mejor solucion gana la recompensa. La empresa obtiene mejor codigo, tu cobras. Sin riesgo para desarrolladores.",
+          highlights: ["Entrada gratis para desarrolladores", "El sponsor financia todo el premio", "Problemas de optimizacion reales", "Ranking en leaderboard global"],
         },
         {
           title: "BOUNTY WAR",
           tier: "RANKED // MAX",
-          desc: "El modo definitivo. Un sponsor pone un bounty garantizado, Y los jugadores agregan sus propias cuotas de entrada encima. Piensa en un torneo de poker con premio garantizado — el piso lo pone el sponsor, pero el pozo total crece mientras mas jugadores se unan. Maximo riesgo, maxima recompensa.",
-          highlights: ["Bounty garantizado + cuotas de jugadores", "Los pozos de premios mas grandes", "El sponsor define el premio minimo", "Competencia elite"],
+          desc: "Un sponsor pone un premio garantizado, y los jugadores pueden opcionalmente agregar cuotas de entrada para hacer crecer el pozo. Piensa en un torneo con minimo garantizado — mas jugadores se unan, mayor la recompensa.",
+          highlights: ["Premio garantizado del sponsor", "Cuotas de entrada opcionales", "Los pozos de premios mas grandes", "Competencia elite"],
+        },
+        {
+          title: "DUELO",
+          tier: "RANKED",
+          desc: "Modo opcional para devs competitivos. Los jugadores apuestan cantidades iguales y compiten cara a cara. La solucion mas eficiente gana el pozo. Solo para desarrolladores que quieran respaldar sus habilidades con stakes reales.",
+          highlights: ["Apuesta igual por jugador", "Ganador se lleva el pozo", "2 a 1,000 jugadores por arena", "Ranking en leaderboard global"],
+        },
+        {
+          title: "TRAINING",
+          tier: "GRATIS",
+          desc: "Practica sin riesgo. Mismos retos que las arenas reales, pero sin dinero y sin impacto en tu ranking. Perfecto para aprender, probar estrategias, o divertirte antes de entrar a modos de pago.",
+          highlights: ["Sin cuota de entrada", "Sin impacto en ranking", "Mismos retos reales", "Intentos ilimitados"],
         },
       ],
     },
