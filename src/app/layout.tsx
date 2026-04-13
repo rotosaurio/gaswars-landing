@@ -23,22 +23,23 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "0xGASWARS // OPTIMIZE_OR_DIE",
+  title: "GasWars — Competitive Code Optimization",
   description:
-    "Competitive code optimization with real stakes. Devs stake BNB and compete to write the most gas-efficient code. Winner drains the pool. 100% on-chain on BSC.",
+    "Compete to write the most efficient code. Companies post bounties, developers optimize and earn. Free to practice, real prizes to win. Starting with Solidity, expanding to Rust, Move, Go, SQL.",
   metadataBase: new URL("https://gaswars-landing.vercel.app"),
   openGraph: {
-    title: "GasWars — Ship Tight. Get Paid.",
+    title: "GasWars — Optimize Code. Get Paid.",
     description:
-      "Competitive code optimization with real stakes. Stake BNB, write the most efficient code, drain the pool. Starting with Solidity — expanding to Rust, Move, Go, SQL.",
+      "Companies post optimization challenges. Developers compete for free. Best code wins the prize. Starting with Solidity — expanding to Rust, Move, Go, SQL.",
     siteName: "GasWars",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GasWars — Ship Tight. Get Paid.",
+    site: "@gaswarsbsc",
+    title: "GasWars — Optimize Code. Get Paid.",
     description:
-      "Competitive code optimization with real stakes. Stake BNB, write the most efficient code, drain the pool.",
+      "Companies post optimization bounties. Developers compete for free. Best code wins. Solidity first, multi-runtime next.",
   },
 };
 

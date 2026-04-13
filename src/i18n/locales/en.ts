@@ -69,7 +69,7 @@ export const en: Dictionary = {
     title: "SHIP TIGHT.",
     titleAccent: "GET",
     titleEnd: "PAID.",
-    subtitle: "// COMPETITIVE CODE OPTIMIZATION. STAKE. SOLVE. DRAIN THE POOL.",
+    subtitle: "// COMPETITIVE CODE OPTIMIZATION. SOLVE. WIN. GET PAID.",
     operatorsRegistered: "OPERATORS_REGISTERED",
     emailPlaceholder: "ENTER_OPERATOR_EMAIL...",
     initiateEntry: "INITIATE_ENTRY",
@@ -94,22 +94,22 @@ export const en: Dictionary = {
   arena: {
     cards: [
       {
-        title: "STAKE_BNB",
-        desc: "Lock BNB to enter the arena. The creator sets the stake per player — all participants commit equal amounts. Your stake feeds the prize pool that winners drain.",
+        title: "ENTER_ARENA",
+        desc: "Join a challenge — for free via bounties, or with an optional entry fee in competitive modes. Companies post real optimization problems. Developers compete to solve them.",
         statLabel: "CAPACITY",
         statValue: "2 — 1,000 PLAYERS",
       },
       {
         title: "OPTIMIZE_CODE",
-        desc: "Solve algorithmic challenges with the most efficient code possible. Starting with Solidity gas optimization — expanding to Rust, Move, Go, SQL and beyond.",
+        desc: "Write the most efficient solution possible. Starting with Solidity gas optimization — expanding to Rust, Move, Go, SQL and beyond. Same challenge, best code wins.",
         statLabel: "ACTIVE_RUNTIME",
         statValue: "SOLIDITY // EVM",
       },
       {
-        title: "DRAIN_THE_POOL",
-        desc: "The most efficient solution wins. The contract resolves winners automatically and sends the prize pool to the victor. Pull-based claims, no stuck funds. Ever.",
+        title: "WIN_THE_PRIZE",
+        desc: "The most efficient solution wins the prize pool. Bounties are funded by sponsors. Payouts are automatic and trustless — no judges, no delays, no disputes.",
         statLabel: "PAYOUT",
-        statValue: "WINNER TAKES POOL",
+        statValue: "BEST CODE WINS",
       },
     ],
   },

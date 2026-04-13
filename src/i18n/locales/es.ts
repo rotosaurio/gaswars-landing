@@ -69,7 +69,7 @@ export const es: Dictionary = {
     title: "CODIGO LIMPIO.",
     titleAccent: "COBRA",
     titleEnd: "BIEN.",
-    subtitle: "// OPTIMIZACION DE CODIGO COMPETITIVA. APUESTA. RESUELVE. DRENA EL POZO.",
+    subtitle: "// OPTIMIZACION DE CODIGO COMPETITIVA. RESUELVE. GANA. COBRA.",
     operatorsRegistered: "OPERADORES_REGISTRADOS",
     emailPlaceholder: "INGRESA_EMAIL_OPERADOR...",
     initiateEntry: "INICIAR_ENTRADA",
@@ -94,22 +94,22 @@ export const es: Dictionary = {
   arena: {
     cards: [
       {
-        title: "APOSTAR_BNB",
-        desc: "Bloquea BNB para entrar a la arena. El creador define la apuesta por jugador — todos aportan la misma cantidad. Tu apuesta alimenta el pozo que los ganadores drenan.",
+        title: "ENTRA_ARENA",
+        desc: "Unete a un reto — gratis via bounties, o con cuota opcional en modos competitivos. Empresas publican problemas reales de optimizacion. Los desarrolladores compiten por resolverlos.",
         statLabel: "CAPACIDAD",
         statValue: "2 — 1,000 JUGADORES",
       },
       {
         title: "OPTIMIZA_CODIGO",
-        desc: "Resuelve retos algoritmicos con el codigo mas eficiente posible. Empezando con optimizacion de gas en Solidity — expandiendo a Rust, Move, Go, SQL y mas.",
+        desc: "Escribe la solucion mas eficiente posible. Empezando con optimizacion de gas en Solidity — expandiendo a Rust, Move, Go, SQL y mas. Mismo reto, el mejor codigo gana.",
         statLabel: "RUNTIME_ACTIVO",
         statValue: "SOLIDITY // EVM",
       },
       {
-        title: "DRENA_POZO",
-        desc: "La solucion mas eficiente gana. El contrato resuelve a los ganadores automaticamente y envia el pozo de premios al vencedor. Cobro tipo pull, sin fondos atascados. Nunca.",
+        title: "GANA_PREMIO",
+        desc: "La solucion mas eficiente gana el pozo de premios. Los bounties son financiados por sponsors. Los pagos son automaticos y trustless — sin jueces, sin demoras, sin disputas.",
         statLabel: "PAGO",
-        statValue: "GANADOR TOMA POZO",
+        statValue: "MEJOR CODIGO GANA",
       },
     ],
   },

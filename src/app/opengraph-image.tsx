@@ -98,7 +98,7 @@ export default async function Image() {
               fontFamily: "monospace",
             }}
           >
-            SHIP TIGHT. GET PAID.
+            OPTIMIZE CODE. GET PAID.
           </span>
         </div>
 
@@ -118,7 +118,7 @@ export default async function Image() {
               fontFamily: "monospace",
             }}
           >
-            STAKE
+            COMPETE
           </span>
           <span
             style={{
@@ -156,7 +156,7 @@ export default async function Image() {
               fontFamily: "monospace",
             }}
           >
-            DRAIN THE POOL
+            WIN THE PRIZE
           </span>
         </div>
 
@@ -174,8 +174,8 @@ export default async function Image() {
             <span style={{ fontSize: "24px", color: "#FFFFFF", fontWeight: 700, fontFamily: "monospace" }}>1,000</span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-            <span style={{ fontSize: "11px", color: "rgba(0,255,65,0.6)", fontFamily: "monospace", letterSpacing: "2px" }}>PROTOCOL_FEE</span>
-            <span style={{ fontSize: "24px", color: "#FFFFFF", fontWeight: 700, fontFamily: "monospace" }}>5%</span>
+            <span style={{ fontSize: "11px", color: "rgba(0,255,65,0.6)", fontFamily: "monospace", letterSpacing: "2px" }}>GAME_MODES</span>
+            <span style={{ fontSize: "24px", color: "#FFFFFF", fontWeight: 700, fontFamily: "monospace" }}>4</span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
             <span style={{ fontSize: "11px", color: "rgba(0,255,65,0.6)", fontFamily: "monospace", letterSpacing: "2px" }}>NETWORK</span>

@@ -46,7 +46,7 @@ function AnimatedCount({ value, locale }: { value: number | null; locale: string
 }
 
 /* ═══════════════════════════════════════════════ */
-const ARENA_ICONS = ["account_balance_wallet", "terminal", "data_exploration"];
+const ARENA_ICONS = ["deployed_code", "terminal", "emoji_events"];
 const ARENA_COLORS = [
   { num: "text-primary-container/20", icon: "text-primary-container", stat: "text-primary-container" },
   { num: "text-secondary-container/20", icon: "text-secondary-container", stat: "text-secondary-container" },
