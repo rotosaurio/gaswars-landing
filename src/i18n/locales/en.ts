@@ -33,7 +33,7 @@ export const en: Dictionary = {
         desc: "The original arena. All players stake equal BNB — the most efficient solution drains the pool. Pure skill, pure payout.",
         details: [
           "Equal stake per player",
-          "Winner takes 95% of pool",
+          "Winner takes the pool",
           "Ranked on global leaderboard",
           "2 — 1,000 players per duel",
         ],
@@ -87,7 +87,7 @@ export const en: Dictionary = {
   ],
   stats: [
     { label: "MAX_PLAYERS", value: "1,000", sub: "Per Arena" },
-    { label: "PROTOCOL_FEE", value: "5%", sub: "Of Prize Pool" },
+    { label: "EXECUTION", value: "TRUSTLESS", sub: "On-Chain Verified" },
     { label: "SETTLEMENT", value: "ATOMIC", sub: "Instant Payout" },
     { label: "NETWORK", value: "BSC", sub: "Binance Smart Chain" },
   ],
@@ -107,9 +107,9 @@ export const en: Dictionary = {
       },
       {
         title: "DRAIN_THE_POOL",
-        desc: "The most efficient solution wins. The contract resolves winners automatically — 95% of the staked pool goes to the victor(s). Pull-based claims, no stuck funds. Ever.",
+        desc: "The most efficient solution wins. The contract resolves winners automatically and sends the prize pool to the victor. Pull-based claims, no stuck funds. Ever.",
         statLabel: "PAYOUT",
-        statValue: "95% TO WINNERS",
+        statValue: "WINNER TAKES POOL",
       },
     ],
   },

@@ -33,7 +33,7 @@ export const es: Dictionary = {
         desc: "La arena original. Todos los jugadores apuestan BNB igual — la solucion mas eficiente drena el pozo. Pura habilidad, puro pago.",
         details: [
           "Apuesta igual por jugador",
-          "Ganador se lleva 95% del pozo",
+          "Ganador se lleva el pozo",
           "Ranking en leaderboard global",
           "2 — 1,000 jugadores por duelo",
         ],
@@ -87,7 +87,7 @@ export const es: Dictionary = {
   ],
   stats: [
     { label: "MAX_JUGADORES", value: "1,000", sub: "Por Arena" },
-    { label: "COMISION", value: "5%", sub: "Del Pozo de Premios" },
+    { label: "EJECUCION", value: "TRUSTLESS", sub: "Verificado On-Chain" },
     { label: "LIQUIDACION", value: "ATOMICA", sub: "Pago Instantaneo" },
     { label: "RED", value: "BSC", sub: "Binance Smart Chain" },
   ],
@@ -107,9 +107,9 @@ export const es: Dictionary = {
       },
       {
         title: "DRENA_POZO",
-        desc: "La solucion mas eficiente gana. El contrato resuelve a los ganadores automaticamente — el 95% del pozo apostado va al vencedor(es). Cobro tipo pull, sin fondos atascados. Nunca.",
+        desc: "La solucion mas eficiente gana. El contrato resuelve a los ganadores automaticamente y envia el pozo de premios al vencedor. Cobro tipo pull, sin fondos atascados. Nunca.",
         statLabel: "PAGO",
-        statValue: "95% A GANADORES",
+        statValue: "GANADOR TOMA POZO",
       },
     ],
   },

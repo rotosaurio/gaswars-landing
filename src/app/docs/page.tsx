@@ -43,18 +43,18 @@ const docs = {
       streams: [
         {
           title: "Duels — skill-based prize pools",
-          desc: "Multiple developers each put in the same entry fee. All the fees go into a shared pool. The developer who writes the most efficient solution wins 95% of the pool. It's not \"betting\" — it's proving your code is better than everyone else's, with money backing your confidence.",
-          example: "Example: 10 developers enter a duel with a $5 entry fee each. The pool is $50. The winner takes $47.50. The platform keeps $2.50 (5%).",
+          desc: "Multiple developers each put in the same entry fee. All the fees go into a shared pool. The developer who writes the most efficient solution wins the pool. It's not \"betting\" — it's proving your code is better than everyone else's, with money backing your confidence.",
+          example: "Example: 10 developers enter a duel with a $5 entry fee each. The pool is $50. The winner takes the pool.",
         },
         {
           title: "Bounties — companies pay you to optimize",
           desc: "A company has code that's inefficient and wants it optimized. They post a bounty — say $1,000 — and hundreds of developers compete to submit the most optimized version. The best solution wins the bounty. You don't pay anything to enter. The company pays, you earn.",
-          example: "Example: A DeFi protocol posts a $2,000 bounty to optimize their swap function. 200 developers compete. The winner gets $1,900, platform keeps $100.",
+          example: "Example: A DeFi protocol posts a $2,000 bounty to optimize their swap function. 200 developers compete. The winner gets the bounty.",
         },
         {
           title: "Bounty Wars — guaranteed floor + player stakes",
           desc: "A sponsor puts up a guaranteed prize (like a poker tournament guarantee), and players can also add entry fees on top. Even if only a few players join, the minimum prize is guaranteed by the sponsor. If lots of players join, the pool grows even bigger.",
-          example: "Example: Sponsor guarantees $500. 20 players add $10 each. Total pool: $700. Winner takes $665.",
+          example: "Example: Sponsor guarantees $500. 20 players add $10 each. Total pool: $700. Winner takes the pool.",
         },
         {
           title: "Training — learn for free, zero risk",
@@ -74,7 +74,7 @@ const docs = {
         { num: "03", title: "Everyone submits their solution", desc: "You write your solution and submit it. Here's the key: nobody can see anyone else's solution until everyone has submitted. This prevents copying." },
         { num: "04", title: "Solutions are revealed", desc: "Once everyone has submitted, all solutions are revealed at the same time. No one had an advantage." },
         { num: "05", title: "The platform measures performance", desc: "Every solution is executed under the exact same conditions. The platform measures how efficient each one is — same input, same environment, no variables." },
-        { num: "06", title: "Winner takes the pool", desc: "The developer with the most efficient solution wins 95% of the prize pool. The remaining 5% is a platform fee. Payouts are automatic — no waiting, no disputes." },
+        { num: "06", title: "Winner takes the pool", desc: "The developer with the most efficient solution wins the prize pool. Payouts are automatic — no waiting, no disputes." },
       ],
     },
     modes: {
@@ -162,7 +162,6 @@ const docs = {
         { label: "Randomness", value: "Future blockhash (unpredictable at commit time)" },
         { label: "Execution", value: "Sandboxed via staticcall (read-only, no exploits)" },
         { label: "Max players per arena", value: "1,000" },
-        { label: "Protocol fee", value: "5% of prize pool" },
         { label: "Contract pattern", value: "EIP-1167 minimal proxy clones (gas-efficient)" },
         { label: "Payout model", value: "Pull-based claims (funds never get stuck)" },
         { label: "Smart contracts", value: "GasWarFactory, GasWarDuel, Sandbox" },
@@ -202,18 +201,18 @@ const docs = {
       streams: [
         {
           title: "Duelos — pozos basados en habilidad",
-          desc: "Varios desarrolladores ponen la misma cuota de entrada. Todas las cuotas van a un pozo compartido. El desarrollador que escribe la solucion mas eficiente gana el 95% del pozo. No es \"apostar\" — es demostrar que tu codigo es mejor que el de todos, respaldando tu confianza con dinero.",
-          example: "Ejemplo: 10 desarrolladores entran a un duelo con $5 de cuota cada uno. El pozo es $50. El ganador se lleva $47.50. La plataforma se queda $2.50 (5%).",
+          desc: "Varios desarrolladores ponen la misma cuota de entrada. Todas las cuotas van a un pozo compartido. El desarrollador que escribe la solucion mas eficiente gana el pozo. No es \"apostar\" — es demostrar que tu codigo es mejor que el de todos, respaldando tu confianza con dinero.",
+          example: "Ejemplo: 10 desarrolladores entran a un duelo con $5 de cuota cada uno. El pozo es $50. El ganador se lleva el pozo.",
         },
         {
           title: "Bounties — empresas te pagan por optimizar",
           desc: "Una empresa tiene codigo ineficiente y quiere optimizarlo. Publica un bounty — digamos $1,000 — y cientos de desarrolladores compiten por enviar la version mas optimizada. La mejor solucion gana el bounty. Tu no pagas nada por entrar. La empresa paga, tu ganas.",
-          example: "Ejemplo: Un protocolo DeFi publica un bounty de $2,000 para optimizar su funcion de swap. 200 desarrolladores compiten. El ganador obtiene $1,900, la plataforma se queda $100.",
+          example: "Ejemplo: Un protocolo DeFi publica un bounty de $2,000 para optimizar su funcion de swap. 200 desarrolladores compiten. El ganador obtiene el bounty.",
         },
         {
           title: "Bounty Wars — piso garantizado + apuestas de jugadores",
           desc: "Un sponsor pone un premio garantizado (como la garantia de un torneo de poker), y los jugadores tambien pueden agregar cuotas de entrada encima. Aunque pocos jugadores se unan, el premio minimo esta garantizado por el sponsor. Si muchos jugadores se unen, el pozo crece aun mas.",
-          example: "Ejemplo: Sponsor garantiza $500. 20 jugadores agregan $10 cada uno. Pozo total: $700. El ganador se lleva $665.",
+          example: "Ejemplo: Sponsor garantiza $500. 20 jugadores agregan $10 cada uno. Pozo total: $700. El ganador se lleva el pozo.",
         },
         {
           title: "Training — aprende gratis, cero riesgo",
@@ -233,7 +232,7 @@ const docs = {
         { num: "03", title: "Todos envian su solucion", desc: "Escribes tu solucion y la envias. Lo clave: nadie puede ver la solucion de nadie hasta que todos hayan enviado. Esto previene que copien." },
         { num: "04", title: "Se revelan las soluciones", desc: "Una vez que todos enviaron, todas las soluciones se revelan al mismo tiempo. Nadie tuvo ventaja." },
         { num: "05", title: "La plataforma mide el rendimiento", desc: "Cada solucion se ejecuta bajo las mismas condiciones exactas. La plataforma mide que tan eficiente es cada una — mismo input, mismo entorno, sin variables." },
-        { num: "06", title: "El ganador se lleva el pozo", desc: "El desarrollador con la solucion mas eficiente gana el 95% del pozo de premios. El 5% restante es comision de plataforma. Los pagos son automaticos — sin esperas, sin disputas." },
+        { num: "06", title: "El ganador se lleva el pozo", desc: "El desarrollador con la solucion mas eficiente gana el pozo de premios. Los pagos son automaticos — sin esperas, sin disputas." },
       ],
     },
     modes: {
