@@ -35,6 +35,35 @@ const docs = {
         "No judges. No subjectivity. The code speaks for itself.",
       ],
     },
+    howDevsEarn: {
+      label: "HOW_DEVS_EARN",
+      title: "Where does the money",
+      titleAccent: "come from?",
+      intro: "GasWars is not gambling. There's no luck involved — the most efficient code always wins. Think of it more like a chess tournament with a prize pool: you enter because you're skilled, not because you're lucky.",
+      streams: [
+        {
+          title: "Duels — skill-based prize pools",
+          desc: "Multiple developers each put in the same entry fee. All the fees go into a shared pool. The developer who writes the most efficient solution wins 95% of the pool. It's not \"betting\" — it's proving your code is better than everyone else's, with money backing your confidence.",
+          example: "Example: 10 developers enter a duel with a $5 entry fee each. The pool is $50. The winner takes $47.50. The platform keeps $2.50 (5%).",
+        },
+        {
+          title: "Bounties — companies pay you to optimize",
+          desc: "A company has code that's inefficient and wants it optimized. They post a bounty — say $1,000 — and hundreds of developers compete to submit the most optimized version. The best solution wins the bounty. You don't pay anything to enter. The company pays, you earn.",
+          example: "Example: A DeFi protocol posts a $2,000 bounty to optimize their swap function. 200 developers compete. The winner gets $1,900, platform keeps $100.",
+        },
+        {
+          title: "Bounty Wars — guaranteed floor + player stakes",
+          desc: "A sponsor puts up a guaranteed prize (like a poker tournament guarantee), and players can also add entry fees on top. Even if only a few players join, the minimum prize is guaranteed by the sponsor. If lots of players join, the pool grows even bigger.",
+          example: "Example: Sponsor guarantees $500. 20 players add $10 each. Total pool: $700. Winner takes $665.",
+        },
+        {
+          title: "Training — learn for free, zero risk",
+          desc: "Don't want to put any money in? Training mode is completely free. Same challenges, same quality — just no entry fee and no prize pool. Perfect for improving your skills before entering paid arenas. Many developers will start here and move to paid modes when they feel ready.",
+          example: "",
+        },
+      ],
+      bottomLine: "You never have to spend money to use GasWars. Training is free. Bounties are free to enter. Duels are optional and only for developers who want to back their skills with real stakes. Every mode rewards skill — the difference is just the source of the prize pool.",
+    },
     howItWorks: {
       label: "HOW_IT_WORKS",
       title: "Step by step.",
@@ -137,7 +166,6 @@ const docs = {
         { label: "Contract pattern", value: "EIP-1167 minimal proxy clones (gas-efficient)" },
         { label: "Payout model", value: "Pull-based claims (funds never get stuck)" },
         { label: "Smart contracts", value: "GasWarFactory, GasWarDuel, Sandbox" },
-        { label: "Test suite", value: "119 tests passing (V2)" },
       ],
     },
     faq: {
@@ -165,6 +193,35 @@ const docs = {
         "Funciona asi: varios desarrolladores entran al mismo reto. Todos escriben su propia solucion al mismo problema. La plataforma ejecuta todas las soluciones bajo condiciones identicas y mide cual rinde mejor. El ganador se lleva el pozo de premios.",
         "Sin jueces. Sin subjetividad. El codigo habla por si solo.",
       ],
+    },
+    howDevsEarn: {
+      label: "COMO_GANAN_LOS_DEVS",
+      title: "De donde sale",
+      titleAccent: "el dinero?",
+      intro: "GasWars no es apuestas. No hay suerte involucrada — el codigo mas eficiente siempre gana. Piensa en ello como un torneo de ajedrez con pozo de premios: entras porque eres habil, no porque tienes suerte.",
+      streams: [
+        {
+          title: "Duelos — pozos basados en habilidad",
+          desc: "Varios desarrolladores ponen la misma cuota de entrada. Todas las cuotas van a un pozo compartido. El desarrollador que escribe la solucion mas eficiente gana el 95% del pozo. No es \"apostar\" — es demostrar que tu codigo es mejor que el de todos, respaldando tu confianza con dinero.",
+          example: "Ejemplo: 10 desarrolladores entran a un duelo con $5 de cuota cada uno. El pozo es $50. El ganador se lleva $47.50. La plataforma se queda $2.50 (5%).",
+        },
+        {
+          title: "Bounties — empresas te pagan por optimizar",
+          desc: "Una empresa tiene codigo ineficiente y quiere optimizarlo. Publica un bounty — digamos $1,000 — y cientos de desarrolladores compiten por enviar la version mas optimizada. La mejor solucion gana el bounty. Tu no pagas nada por entrar. La empresa paga, tu ganas.",
+          example: "Ejemplo: Un protocolo DeFi publica un bounty de $2,000 para optimizar su funcion de swap. 200 desarrolladores compiten. El ganador obtiene $1,900, la plataforma se queda $100.",
+        },
+        {
+          title: "Bounty Wars — piso garantizado + apuestas de jugadores",
+          desc: "Un sponsor pone un premio garantizado (como la garantia de un torneo de poker), y los jugadores tambien pueden agregar cuotas de entrada encima. Aunque pocos jugadores se unan, el premio minimo esta garantizado por el sponsor. Si muchos jugadores se unen, el pozo crece aun mas.",
+          example: "Ejemplo: Sponsor garantiza $500. 20 jugadores agregan $10 cada uno. Pozo total: $700. El ganador se lleva $665.",
+        },
+        {
+          title: "Training — aprende gratis, cero riesgo",
+          desc: "No quieres poner dinero? El modo Training es completamente gratis. Mismos retos, misma calidad — solo que sin cuota de entrada y sin pozo de premios. Perfecto para mejorar tus habilidades antes de entrar a arenas de pago. Muchos desarrolladores empezaran aqui y pasaran a modos de pago cuando se sientan listos.",
+          example: "",
+        },
+      ],
+      bottomLine: "Nunca tienes que gastar dinero para usar GasWars. Training es gratis. Los bounties son gratis para entrar. Los duelos son opcionales y solo para desarrolladores que quieran respaldar sus habilidades con stakes reales. Cada modo premia la habilidad — la diferencia es solo de donde viene el pozo de premios.",
     },
     howItWorks: {
       label: "COMO_FUNCIONA",
@@ -338,6 +395,42 @@ export default function DocsPage() {
                 {t.whatIs.paragraphs.map((p, i) => (
                   <p key={i} className="text-white/50 text-base leading-relaxed font-body">{p}</p>
                 ))}
+              </div>
+            </FadeUp>
+          </section>
+
+          {/* ── HOW DEVS EARN ── */}
+          <section className="py-16 border-t border-outline-variant/15">
+            <FadeUp>
+              <span className="font-mono text-[10px] text-primary-container tracking-[0.3em] uppercase block mb-4">{t.howDevsEarn.label}</span>
+              <h2 className="text-3xl md:text-4xl font-headline font-bold text-white tracking-tighter mb-4">
+                {t.howDevsEarn.title} <span className="text-primary-container">{t.howDevsEarn.titleAccent}</span>
+              </h2>
+              <p className="text-white/50 text-base leading-relaxed font-body mb-12 max-w-2xl">{t.howDevsEarn.intro}</p>
+            </FadeUp>
+
+            <div className="space-y-6 mb-12">
+              {t.howDevsEarn.streams.map((stream) => (
+                <FadeUp key={stream.title}>
+                  <div className="bg-surface-container-low p-8 hover:bg-surface-container transition-colors">
+                    <h3 className="font-headline text-lg font-bold text-white mb-3">{stream.title}</h3>
+                    <p className="text-white/40 text-sm leading-relaxed font-body mb-4">{stream.desc}</p>
+                    {stream.example && (
+                      <div className="bg-surface-container-lowest border border-outline-variant/10 px-4 py-3">
+                        <span className="font-mono text-[11px] text-primary-container/70">{stream.example}</span>
+                      </div>
+                    )}
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+
+            <FadeUp>
+              <div className="bg-primary-container/5 border border-primary-container/20 p-6">
+                <p className="text-white/60 text-sm leading-relaxed font-body">
+                  <span className="text-primary-container font-bold font-headline uppercase tracking-widest text-xs">{locale === "en" ? "BOTTOM LINE" : "EN RESUMEN"}: </span>
+                  {t.howDevsEarn.bottomLine}
+                </p>
               </div>
             </FadeUp>
           </section>
