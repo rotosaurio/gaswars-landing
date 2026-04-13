@@ -310,7 +310,7 @@ export default function Landing() {
             {t.gameModes.modes.map((mode, i) => {
               const tierStyles = {
                 free: { accent: "text-white/50", border: "border-white/10", dot: "bg-white/30", tagBg: "bg-white/5 text-white/40" },
-                stake: { accent: "text-primary-container", border: "border-primary-container/20", dot: "bg-primary-container", tagBg: "bg-primary-container/10 text-primary-container" },
+                duel: { accent: "text-primary-container", border: "border-primary-container/20", dot: "bg-primary-container", tagBg: "bg-primary-container/10 text-primary-container" },
                 bounty: { accent: "text-secondary-container", border: "border-secondary-container/20", dot: "bg-secondary-container", tagBg: "bg-secondary-container/10 text-secondary-container" },
                 max: { accent: "text-on-tertiary-container", border: "border-on-tertiary-container/20", dot: "bg-on-tertiary-container", tagBg: "bg-on-tertiary-container/10 text-on-tertiary-container" },
               }[mode.tier];

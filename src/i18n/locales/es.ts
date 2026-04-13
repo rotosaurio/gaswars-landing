@@ -13,7 +13,7 @@ export const es: Dictionary = {
     title: "CUATRO MODOS.",
     titleAccent: "UNA",
     titleEnd: "ARENA.",
-    desc: "Desde entrenamiento sin riesgo hasta guerras de bounty con stake alto — elige como competir. Todos los modos corren sobre el mismo pipeline trustless.",
+    desc: "Desde entrenamiento sin riesgo hasta guerras de bounty con grandes premios — elige como competir. Todos los modos corren sobre el mismo pipeline trustless.",
     modes: [
       {
         tag: "RANKED",
@@ -42,14 +42,14 @@ export const es: Dictionary = {
       {
         tag: "RANKED",
         title: "DUELO",
-        desc: "Los jugadores apuestan cantidades iguales y compiten cara a cara. La solucion mas eficiente gana el pozo. Modo opcional para desarrolladores que quieran respaldar sus habilidades con stakes reales.",
+        desc: "Los jugadores entran con cuotas iguales y compiten cara a cara. La solucion mas eficiente gana el premio. Modo opcional para desarrolladores que quieran poner a prueba sus habilidades.",
         details: [
-          "Apuesta igual por jugador",
-          "Ganador se lleva el pozo",
+          "Cuota igual por jugador",
+          "Ganador se lleva el premio",
           "Ranking en leaderboard global",
           "2 — 1,000 jugadores por duelo",
         ],
-        tier: "stake",
+        tier: "duel",
       },
       {
         tag: "GRATIS",
@@ -120,7 +120,7 @@ export const es: Dictionary = {
     titleEnd: "EN 6 FASES.",
     desc: "Cada duelo sigue un pipeline trustless y deterministico — desde la inscripcion hasta el commit-reveal, la medicion de rendimiento y la liquidacion atomica.",
     phases: [
-      { phase: "ABIERTO", desc: "Jugadores se unen y apuestan BNB" },
+      { phase: "ABIERTO", desc: "Jugadores se unen a la arena" },
       { phase: "COMMIT", desc: "Envian keccak256(solucion + salt)" },
       { phase: "REVEAL", desc: "Revelan solucion y salt on-chain" },
       { phase: "EJECUTAR", desc: "Sandbox mide el rendimiento" },
@@ -177,7 +177,7 @@ export const es: Dictionary = {
         name: "GasWarFactory",
         role: "CENTRO_DE_MANDO",
         lines: "260",
-        desc: "Despliega clones minimal proxy EIP-1167 por duelo. Controla comisiones globales, apuestas minimas y permisos de oraculo. Acumula comisiones de plataforma.",
+        desc: "Despliega clones minimal proxy EIP-1167 por duelo. Controla comisiones globales, cuotas minimas y permisos de oraculo. Acumula comisiones de plataforma.",
         functions: ["createDuel()", "setMinStake()", "withdrawFees()"],
       },
       {
@@ -201,7 +201,7 @@ export const es: Dictionary = {
     title: "UN PROTOCOLO.",
     titleAccent: "TODA",
     titleEnd: "OPTIMIZACION.",
-    desc: "GasWars empieza con optimizacion de gas en Solidity sobre EVM — pero el protocolo esta disenado para expandirse a cada runtime donde el rendimiento importa. Mismo staking. Mismo commit-reveal. Nuevos campos de batalla.",
+    desc: "GasWars empieza con optimizacion de gas en Solidity sobre EVM — pero el protocolo esta disenado para expandirse a cada runtime donde el rendimiento importa. Mismo formato de competencia. Mismo commit-reveal. Nuevos campos de batalla.",
     items: [
       {
         name: "EVM",

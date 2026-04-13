@@ -39,7 +39,7 @@ const docs = {
       label: "HOW_DEVS_EARN",
       title: "Where does the money",
       titleAccent: "come from?",
-      intro: "GasWars is not gambling. There's no luck involved — the most efficient code always wins. Think of it more like a chess tournament with a prize pool: you enter because you're skilled, not because you're lucky.",
+      intro: "Companies post real problems, developers compete, and the best solution gets paid. The most efficient code always wins. Think of it like a programming competition with real prizes — you enter because you're skilled.",
       streams: [
         {
           title: "Bounties — companies pay you to optimize",
@@ -47,13 +47,13 @@ const docs = {
           example: "Example: A DeFi protocol posts a $2,000 bounty to optimize their swap function. 200 developers compete for free. The winner gets the bounty.",
         },
         {
-          title: "Bounty Wars — guaranteed floor + optional player stakes",
+          title: "Bounty Wars — guaranteed floor + optional entry fees",
           desc: "A sponsor puts up a guaranteed prize, and players can optionally add entry fees on top to grow the pool. Even if only a few players join, the minimum prize is guaranteed by the sponsor. If lots of players join, the pool grows even bigger.",
           example: "Example: Sponsor guarantees $500. 20 players optionally add $10 each. Total pool: $700. Winner takes the pool.",
         },
         {
           title: "Duels — optional skill-based prize pools",
-          desc: "For competitive devs who want to back their skills with real stakes. Multiple developers each put in the same entry fee. The developer who writes the most efficient solution wins the pool. This mode is optional — you never have to play it.",
+          desc: "For competitive devs who want to put their skills to the test. Multiple developers each put in the same entry fee. The developer who writes the most efficient solution wins the prize. This mode is optional — you never have to use it.",
           example: "Example: 10 developers enter a duel with a $5 entry fee each. The pool is $50. The winner takes the pool.",
         },
         {
@@ -62,7 +62,7 @@ const docs = {
           example: "",
         },
       ],
-      bottomLine: "You never have to spend money to use GasWars. Training is free. Bounties are free to enter. Duels are optional and only for developers who want to back their skills with real stakes. Every mode rewards skill — the difference is just the source of the prize pool.",
+      bottomLine: "You never have to spend money to use GasWars. Training is free. Bounties are free to enter. Duels are optional and only for developers who want to put their skills to the test. Every mode rewards skill — the difference is just the source of the prize pool.",
     },
     howItWorks: {
       label: "HOW_IT_WORKS",
@@ -97,8 +97,8 @@ const docs = {
         {
           title: "DUEL",
           tier: "RANKED",
-          desc: "Optional mode for competitive devs. Players stake equal amounts and compete head-to-head. The most efficient solution wins the pool. Only for developers who want to back their skills with real stakes.",
-          highlights: ["Equal stake per player", "Winner takes the pool", "2 to 1,000 players per arena", "Global leaderboard ranking"],
+          desc: "Optional mode for competitive devs. Players enter with equal entry fees and compete head-to-head. The most efficient solution wins the prize. Only for developers who want to put their skills to the test.",
+          highlights: ["Equal entry fee per player", "Winner takes the prize", "2 to 1,000 players per arena", "Global leaderboard ranking"],
         },
         {
           title: "TRAINING",
@@ -197,7 +197,7 @@ const docs = {
       label: "COMO_GANAN_LOS_DEVS",
       title: "De donde sale",
       titleAccent: "el dinero?",
-      intro: "GasWars no es apuestas. No hay suerte involucrada — el codigo mas eficiente siempre gana. Piensa en ello como un torneo de ajedrez con pozo de premios: entras porque eres habil, no porque tienes suerte.",
+      intro: "Empresas publican problemas reales, los desarrolladores compiten, y la mejor solucion cobra. El codigo mas eficiente siempre gana. Piensa en ello como una competencia de programacion con premios reales — entras porque eres habil.",
       streams: [
         {
           title: "Bounties — empresas te pagan por optimizar",
@@ -205,13 +205,13 @@ const docs = {
           example: "Ejemplo: Un protocolo DeFi publica un bounty de $2,000 para optimizar su funcion de swap. 200 desarrolladores compiten gratis. El ganador obtiene el bounty.",
         },
         {
-          title: "Bounty Wars — piso garantizado + cuotas opcionales",
+          title: "Bounty Wars — piso garantizado + cuotas de entrada opcionales",
           desc: "Un sponsor pone un premio garantizado, y los jugadores pueden opcionalmente agregar cuotas de entrada para hacer crecer el pozo. Aunque pocos jugadores se unan, el premio minimo esta garantizado por el sponsor. Si muchos se unen, el pozo crece aun mas.",
           example: "Ejemplo: Sponsor garantiza $500. 20 jugadores opcionalmente agregan $10 cada uno. Pozo total: $700. El ganador se lleva el pozo.",
         },
         {
-          title: "Duelos — pozos opcionales basados en habilidad",
-          desc: "Para devs competitivos que quieran respaldar sus habilidades con stakes reales. Varios desarrolladores ponen la misma cuota de entrada. El que escribe la solucion mas eficiente gana el pozo. Este modo es opcional — nunca tienes que jugarlo.",
+          title: "Duelos — pozos de premios opcionales por habilidad",
+          desc: "Para devs competitivos que quieran poner a prueba sus habilidades. Varios desarrolladores ponen la misma cuota de entrada. El que escribe la solucion mas eficiente gana el premio. Este modo es opcional — nunca tienes que usarlo.",
           example: "Ejemplo: 10 desarrolladores entran a un duelo con $5 de cuota cada uno. El pozo es $50. El ganador se lleva el pozo.",
         },
         {
@@ -220,7 +220,7 @@ const docs = {
           example: "",
         },
       ],
-      bottomLine: "Nunca tienes que gastar dinero para usar GasWars. Training es gratis. Los bounties son gratis para entrar. Los duelos son opcionales y solo para desarrolladores que quieran respaldar sus habilidades con stakes reales. Cada modo premia la habilidad — la diferencia es solo de donde viene el pozo de premios.",
+      bottomLine: "Nunca tienes que gastar dinero para usar GasWars. Training es gratis. Los bounties son gratis para entrar. Los duelos son opcionales y solo para desarrolladores que quieran poner a prueba sus habilidades. Cada modo premia la habilidad — la diferencia es solo de donde viene el pozo de premios.",
     },
     howItWorks: {
       label: "COMO_FUNCIONA",
@@ -255,8 +255,8 @@ const docs = {
         {
           title: "DUELO",
           tier: "RANKED",
-          desc: "Modo opcional para devs competitivos. Los jugadores apuestan cantidades iguales y compiten cara a cara. La solucion mas eficiente gana el pozo. Solo para desarrolladores que quieran respaldar sus habilidades con stakes reales.",
-          highlights: ["Apuesta igual por jugador", "Ganador se lleva el pozo", "2 a 1,000 jugadores por arena", "Ranking en leaderboard global"],
+          desc: "Modo opcional para devs competitivos. Los jugadores entran con cuotas iguales y compiten cara a cara. La solucion mas eficiente gana el premio. Solo para desarrolladores que quieran poner a prueba sus habilidades.",
+          highlights: ["Cuota igual por jugador", "Ganador se lleva el premio", "2 a 1,000 jugadores por arena", "Ranking en leaderboard global"],
         },
         {
           title: "TRAINING",
@@ -320,11 +320,9 @@ const docs = {
         { label: "Aleatoriedad", value: "Blockhash futuro (impredecible al momento del commit)" },
         { label: "Ejecucion", value: "Sandboxed via staticcall (solo lectura, sin exploits)" },
         { label: "Max jugadores por arena", value: "1,000" },
-        { label: "Comision de plataforma", value: "5% del pozo de premios" },
         { label: "Patron de contratos", value: "EIP-1167 minimal proxy clones (eficiente en gas)" },
         { label: "Modelo de pago", value: "Cobro tipo pull (los fondos nunca se atascan)" },
         { label: "Smart contracts", value: "GasWarFactory, GasWarDuel, Sandbox" },
-        { label: "Suite de tests", value: "119 tests pasando (V2)" },
       ],
     },
     faq: {

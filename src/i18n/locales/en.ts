@@ -13,7 +13,7 @@ export const en: Dictionary = {
     title: "FOUR MODES.",
     titleAccent: "ONE",
     titleEnd: "ARENA.",
-    desc: "From zero-risk training to high-stakes bounty wars — pick how you compete. Every mode runs on the same trustless pipeline.",
+    desc: "From zero-risk training to high-reward bounty wars — pick how you compete. Every mode runs on the same trustless pipeline.",
     modes: [
       {
         tag: "RANKED",
@@ -42,14 +42,14 @@ export const en: Dictionary = {
       {
         tag: "RANKED",
         title: "DUEL",
-        desc: "Players stake equal amounts and compete head-to-head. The most efficient solution wins the pool. Optional mode for developers who want to back their skills with real stakes.",
+        desc: "Players enter with equal entry fees and compete head-to-head. The most efficient solution wins the prize. Optional mode for developers who want to put their skills to the test.",
         details: [
-          "Equal stake per player",
-          "Winner takes the pool",
+          "Equal entry fee per player",
+          "Winner takes the prize",
           "Ranked on global leaderboard",
           "2 — 1,000 players per duel",
         ],
-        tier: "stake",
+        tier: "duel",
       },
       {
         tag: "FREE",
@@ -120,7 +120,7 @@ export const en: Dictionary = {
     titleEnd: "PIPELINE.",
     desc: "Each duel follows a trustless, deterministic pipeline — from open enrollment through commit-reveal to on-chain measurement and atomic settlement.",
     phases: [
-      { phase: "OPEN", desc: "Players join & stake BNB" },
+      { phase: "OPEN", desc: "Players join the arena" },
       { phase: "COMMIT", desc: "Submit keccak256(solution + salt)" },
       { phase: "REVEAL", desc: "Reveal solution & salt on-chain" },
       { phase: "EXECUTE", desc: "Sandbox measures performance" },
@@ -177,7 +177,7 @@ export const en: Dictionary = {
         name: "GasWarFactory",
         role: "COMMAND_CENTER",
         lines: "260",
-        desc: "Deploys EIP-1167 minimal proxy clones per duel. Controls global fees, stake minimums, and oracle permissions. Accumulates platform fees.",
+        desc: "Deploys EIP-1167 minimal proxy clones per duel. Controls global fees, entry minimums, and oracle permissions. Accumulates platform fees.",
         functions: ["createDuel()", "setMinStake()", "withdrawFees()"],
       },
       {
@@ -201,7 +201,7 @@ export const en: Dictionary = {
     title: "ONE PROTOCOL.",
     titleAccent: "EVERY",
     titleEnd: "OPTIMIZATION.",
-    desc: "GasWars starts with Solidity gas optimization on EVM — but the protocol is designed to expand into every runtime where performance matters. Same staking. Same commit-reveal. New battlegrounds.",
+    desc: "GasWars starts with Solidity gas optimization on EVM — but the protocol is designed to expand into every runtime where performance matters. Same competition format. Same commit-reveal. New battlegrounds.",
     items: [
       {
         name: "EVM",

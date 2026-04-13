@@ -51,7 +51,7 @@ export interface GameMode {
   title: string;
   desc: string;
   details: string[];
-  tier: "free" | "stake" | "bounty" | "max";
+  tier: "free" | "duel" | "bounty" | "max";
 }
 
 export interface Dictionary {
