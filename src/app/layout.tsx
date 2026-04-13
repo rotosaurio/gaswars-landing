@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/i18n/context";
 import "./globals.css";
 
@@ -25,7 +25,21 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "0xGASWARS // OPTIMIZE_OR_DIE",
   description:
-    "High-stakes competitive Solidity engineering. Optimize gas, claim the pool. 100% on-chain on BSC.",
+    "Competitive code optimization with real stakes. Devs stake BNB and compete to write the most gas-efficient code. Winner drains the pool. 100% on-chain on BSC.",
+  metadataBase: new URL("https://gaswars-landing.vercel.app"),
+  openGraph: {
+    title: "GasWars — Ship Tight. Get Paid.",
+    description:
+      "Competitive code optimization with real stakes. Stake BNB, write the most efficient code, drain the pool. Starting with Solidity — expanding to Rust, Move, Go, SQL.",
+    siteName: "GasWars",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GasWars — Ship Tight. Get Paid.",
+    description:
+      "Competitive code optimization with real stakes. Stake BNB, write the most efficient code, drain the pool.",
+  },
 };
 
 export default function RootLayout({

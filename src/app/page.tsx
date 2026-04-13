@@ -136,9 +136,9 @@ export default function Landing() {
             >
               {locale === "en" ? "ES" : "EN"}
             </button>
-            <button className="hidden md:block bg-primary-container text-on-primary font-headline font-bold px-4 py-2 text-xs tracking-widest hover:shadow-[0_0_12px_rgba(0,230,57,0.3)] transition-all duration-150 active:scale-95">
-              {t.nav.connectWallet}
-            </button>
+            <a href="/docs" className="hidden md:block bg-primary-container text-on-primary font-headline font-bold px-4 py-2 text-xs tracking-widest hover:shadow-[0_0_12px_rgba(0,230,57,0.3)] transition-all duration-150 active:scale-95">
+              DOCS
+            </a>
             {/* Mobile hamburger */}
             <button
               className="md:hidden flex flex-col gap-1.5 p-2"
@@ -163,9 +163,9 @@ export default function Landing() {
                 {l.label}
               </a>
             ))}
-            <button className="w-full bg-primary-container text-on-primary font-headline font-bold px-4 py-3 text-xs tracking-widest mt-2">
-              {t.nav.connectWallet}
-            </button>
+            <a href="/docs" className="block w-full bg-primary-container text-on-primary font-headline font-bold px-4 py-3 text-xs tracking-widest mt-2 text-center">
+              DOCS
+            </a>
           </div>
         )}
       </nav>
